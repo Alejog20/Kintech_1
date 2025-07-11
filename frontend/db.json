@@ -1,0 +1,46 @@
+{
+  "properties": [
+    {
+      "id": 1,
+      "title": "Modern Family Home",
+      "price": 450000,
+      "location": "Hampstead, London",
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "sqft": 1850,
+      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
+      "description": "Beautiful modern family home in prestigious Hampstead area. Recently renovated with high-end finishes throughout.",
+      "features": ["Garden", "Parking", "Modern Kitchen", "En-suite"],
+      "agent": "Sarah Wilson",
+      "phone": "+44 20 7946 0958"
+    },
+    {
+      "id": 2,
+      "title": "City Centre Apartment", 
+      "price": 320000,
+      "location": "Canary Wharf, London",
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "sqft": 950,
+      "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
+      "description": "Stunning apartment with panoramic city views. Perfect for professionals seeking luxury urban living.",
+      "features": ["Concierge", "Gym", "Balcony", "City Views"],
+      "agent": "James Thompson",
+      "phone": "+44 20 7946 0959"
+    },
+    {
+      "id": 3,
+      "title": "Victorian Townhouse",
+      "price": 650000,
+      "location": "Richmond, London", 
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "sqft": 2400,
+      "image": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop",
+      "description": "Charming Victorian townhouse with period features and modern amenities. Large garden and excellent transport links.",
+      "features": ["Period Features", "Large Garden", "Off-Street Parking", "Near Station"],
+      "agent": "Emma Clarke", 
+      "phone": "+44 20 7946 0960"
+    }
+  ]
+}
