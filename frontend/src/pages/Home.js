@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   const [properties, setProperties] = useState([]);
+  const [filteredProperties, setFilteredProperties] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState('all');
 
   useEffect(() => {
     fetchProperties();
@@ -14,13 +16,15 @@ function Home() {
       const response = await fetch('/properties');
       const data = await response.json();
       setProperties(data);
+      setFilteredProperties(data);
       setLoading(false);
     } catch (err) {
-      // Mock data fallback
+      // Mock data fallback with both sale and rental properties
       const mockData = [
         {
           id: 1,
           title: "Modern Family Home",
+          type: "sale",
           price: 450000,
           location: "Hampstead, London",
           bedrooms: 3,
@@ -35,7 +39,9 @@ function Home() {
         {
           id: 2,
           title: "City Centre Apartment",
-          price: 320000,
+          type: "rental",
+          pricePerNight: 150,
+          maxGuests: 4,
           location: "Canary Wharf, London",
           bedrooms: 2,
           bathrooms: 1,
@@ -49,6 +55,7 @@ function Home() {
         {
           id: 3,
           title: "Victorian Townhouse",
+          type: "sale",
           price: 650000,
           location: "Richmond, London",
           bedrooms: 4,
@@ -59,19 +66,53 @@ function Home() {
           features: ["Period Features", "Large Garden", "Parking"],
           agent: "Emma Clarke",
           phone: "+44 20 7946 0960"
+        },
+        {
+          id: 4,
+          title: "Luxury Studio Apartment",
+          type: "rental",
+          pricePerNight: 95,
+          maxGuests: 2,
+          location: "Shoreditch, London",
+          bedrooms: 1,
+          bathrooms: 1,
+          sqft: 500,
+          image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
+          description: "Modern studio apartment in trendy Shoreditch.",
+          features: ["WiFi", "Kitchen", "Workspace"],
+          agent: "David Lee",
+          phone: "+44 20 7946 0961"
         }
       ];
       setProperties(mockData);
+      setFilteredProperties(mockData);
       setLoading(false);
     }
   };
 
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('en-GB', {
-      style: 'currency',
-      currency: 'GBP',
-      maximumFractionDigits: 0
-    }).format(price);
+  const handleFilterChange = (filter) => {
+    setActiveFilter(filter);
+    if (filter === 'all') {
+      setFilteredProperties(properties);
+    } else {
+      setFilteredProperties(properties.filter(property => property.type === filter));
+    }
+  };
+
+  const formatPrice = (property) => {
+    if (property.type === 'rental') {
+      return new Intl.NumberFormat('en-GB', {
+        style: 'currency',
+        currency: 'GBP',
+        maximumFractionDigits: 0
+      }).format(property.pricePerNight || 120) + '/night';
+    } else {
+      return new Intl.NumberFormat('en-GB', {
+        style: 'currency',
+        currency: 'GBP',
+        maximumFractionDigits: 0
+      }).format(property.price);
+    }
   };
 
   if (loading) return <div className="loading">Loading properties...</div>;
@@ -81,10 +122,10 @@ function Home() {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">Find Your Perfect Home in London</h1>
+          <h1 className="hero-title">Find Your Perfect Property in London</h1>
           <p className="hero-subtitle">
-            Discover exceptional properties with our expert guidance. 
-            Your dream home awaits in London's finest locations.
+            Whether you're looking to buy your dream home or book a perfect rental, 
+            we have exceptional properties with expert guidance.
           </p>
           <div className="hero-stats">
             <div className="stat">
@@ -103,16 +144,47 @@ function Home() {
         </div>
       </section>
 
+      {/* Filter Section */}
+      <section className="filter-section">
+        <div className="container">
+          <div className="property-filters">
+            <h2>Browse Properties</h2>
+            <div className="filter-buttons">
+              <button 
+                className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+                onClick={() => handleFilterChange('all')}
+              >
+                All Properties ({properties.length})
+              </button>
+              <button 
+                className={`filter-btn ${activeFilter === 'sale' ? 'active' : ''}`}
+                onClick={() => handleFilterChange('sale')}
+              >
+                For Sale ({properties.filter(p => p.type === 'sale').length})
+              </button>
+              <button 
+                className={`filter-btn ${activeFilter === 'rental' ? 'active' : ''}`}
+                onClick={() => handleFilterChange('rental')}
+              >
+                For Rent ({properties.filter(p => p.type === 'rental').length})
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Properties Section */}
       <section className="properties-section">
         <div className="container">
-          <h2 className="section-title">Featured Properties</h2>
           <div className="properties-grid">
-            {properties.map(property => (
+            {filteredProperties.map(property => (
               <div key={property.id} className="property-card">
                 <div className="property-image">
                   <img src={property.image} alt={property.title} />
-                  <div className="property-price">{formatPrice(property.price)}</div>
+                  <div className="property-price">{formatPrice(property)}</div>
+                  <div className={`property-type-badge ${property.type}`}>
+                    {property.type === 'rental' ? 'For Rent' : 'For Sale'}
+                  </div>
                 </div>
                 <div className="property-content">
                   <h3 className="property-title">{property.title}</h3>
@@ -121,6 +193,9 @@ function Home() {
                     <span className="feature">🛏️ {property.bedrooms} bed</span>
                     <span className="feature">🚿 {property.bathrooms} bath</span>
                     <span className="feature">📐 {property.sqft} sqft</span>
+                    {property.type === 'rental' && (
+                      <span className="feature">👥 {property.maxGuests || 4} guests</span>
+                    )}
                   </div>
                   <p className="property-description">
                     {property.description.substring(0, 100)}...
@@ -129,7 +204,7 @@ function Home() {
                     to={`/property/${property.id}`} 
                     className="view-details-btn"
                   >
-                    View Details
+                    {property.type === 'rental' ? 'Check Availability' : 'Schedule Tour'}
                   </Link>
                 </div>
               </div>
@@ -138,10 +213,54 @@ function Home() {
         </div>
       </section>
 
+      {/* Business Models Section */}
+      <section className="business-models-section">
+        <div className="container">
+          <h2>Our Services</h2>
+          <div className="business-models-grid">
+            <div className="business-model">
+              <div className="model-icon">🏠</div>
+              <h3>Property Sales</h3>
+              <p>Find your dream home with our expert guidance. Schedule personalized tours and get professional advice throughout the buying process.</p>
+              <ul>
+                <li>✓ Expert property consultations</li>
+                <li>✓ Guided property tours</li>
+                <li>✓ Market analysis and pricing</li>
+                <li>✓ End-to-end buying support</li>
+              </ul>
+              <button 
+                className="cta-button"
+                onClick={() => handleFilterChange('sale')}
+              >
+                Browse Properties for Sale
+              </button>
+            </div>
+            
+            <div className="business-model">
+              <div className="model-icon">🗓️</div>
+              <h3>Short-term Rentals</h3>
+              <p>Book perfect accommodations for your London stay. Integrated with Airbnb for seamless booking and availability management.</p>
+              <ul>
+                <li>✓ Instant booking confirmation</li>
+                <li>✓ Real-time availability</li>
+                <li>✓ Airbnb synchronization</li>
+                <li>✓ Professional property management</li>
+              </ul>
+              <button 
+                className="cta-button"
+                onClick={() => handleFilterChange('rental')}
+              >
+                Browse Rental Properties
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="cta-section">
         <div className="container">
-          <h2>Ready to Find Your Dream Home?</h2>
+          <h2>Ready to Find Your Perfect Property?</h2>
           <p>Our expert team is here to guide you every step of the way</p>
           <Link to="/contact" className="cta-button-large">
             Get Started Today

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 function PropertyCard({ property }) {
   const [isLiked, setIsLiked] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-GB', {
@@ -18,22 +17,47 @@ function PropertyCard({ property }) {
     setIsLiked(!isLiked);
   };
 
+  const getPriceDisplay = () => {
+    if (property.type === 'rental') {
+      return `${formatPrice(property.pricePerNight || 120)}/night`;
+    } else {
+      return formatPrice(property.price);
+    }
+  };
+
+  const getStatusBadge = () => {
+    if (property.type === 'rental') {
+      return <div className="status-badge rental">For Rent</div>;
+    } else {
+      return <div className="status-badge sale">For Sale</div>;
+    }
+  };
+
+  const getActionButton = () => {
+    if (property.type === 'rental') {
+      return (
+        <Link to={`/property/${property.id}`} className="btn-primary">
+          Check Availability
+        </Link>
+      );
+    } else {
+      return (
+        <Link to={`/property/${property.id}`} className="btn-primary">
+          Schedule Tour
+        </Link>
+      );
+    }
+  };
+
   return (
     <div className="property-card">
       <div className="property-image-container">
-        <img 
-          src={property.image} 
-          alt={property.title}
-          onLoad={() => setImageLoaded(true)}
-          className={`property-image ${imageLoaded ? 'loaded' : ''}`}
-        />
+        <img src={property.image} alt={property.title} className="property-image" />
         
-        {/* Price Badge */}
         <div className="price-badge">
-          {formatPrice(property.price)}
+          {getPriceDisplay()}
         </div>
         
-        {/* Favorite Button */}
         <button 
           className={`favorite-btn ${isLiked ? 'liked' : ''}`}
           onClick={handleLike}
@@ -42,8 +66,7 @@ function PropertyCard({ property }) {
           {isLiked ? '❤️' : '🤍'}
         </button>
         
-        {/* Property Status */}
-        <div className="status-badge">For Sale</div>
+        {getStatusBadge()}
       </div>
       
       <div className="property-content">
@@ -52,36 +75,32 @@ function PropertyCard({ property }) {
           <p className="property-location">📍 {property.location}</p>
         </div>
         
-        {/* Quick Stats */}
         <div className="property-stats">
           <span className="stat">🛏️ {property.bedrooms}</span>
           <span className="stat">🚿 {property.bathrooms}</span>
           <span className="stat">📐 {property.sqft} sqft</span>
+          {property.type === 'rental' && (
+            <span className="stat">👥 {property.maxGuests || 4} guests</span>
+          )}
         </div>
         
-        {/* Key Features */}
         <div className="property-tags">
           {property.features.slice(0, 3).map((feature, index) => (
             <span key={index} className="feature-tag">{feature}</span>
           ))}
         </div>
         
-        {/* Description Preview */}
         <p className="property-preview">
           {property.description.substring(0, 80)}...
         </p>
         
-        {/* Agent Info */}
         <div className="agent-preview">
           <div className="agent-avatar">👤</div>
           <span className="agent-name">{property.agent}</span>
         </div>
         
-        {/* Action Buttons */}
         <div className="property-actions">
-          <Link to={`/property/${property.id}`} className="btn-primary">
-            View Details
-          </Link>
+          {getActionButton()}
           <button className="btn-secondary">
             📞 Call Now
           </button>
