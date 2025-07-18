@@ -5,9 +5,9 @@ function PropertyCard({ property }) {
   const [isLiked, setIsLiked] = useState(false);
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('en-GB', {
+    return new Intl.NumberFormat('en-COP', {
       style: 'currency',
-      currency: 'GBP',
+      currency: 'COP',
       maximumFractionDigits: 0
     }).format(price);
   };
@@ -27,9 +27,9 @@ function PropertyCard({ property }) {
 
   const getStatusBadge = () => {
     if (property.type === 'rental') {
-      return <div className="status-badge rental">For Rent</div>;
+      return <div className="status-badge rental">Alquiler</div>;
     } else {
-      return <div className="status-badge sale">For Sale</div>;
+      return <div className="status-badge sale">A la venta</div>;
     }
   };
 
@@ -37,13 +37,13 @@ function PropertyCard({ property }) {
     if (property.type === 'rental') {
       return (
         <Link to={`/property/${property.id}`} className="btn-primary">
-          Check Availability
+          Revisar Disponibilidad
         </Link>
       );
     } else {
       return (
         <Link to={`/property/${property.id}`} className="btn-primary">
-          Schedule Tour
+          Agendar una visita
         </Link>
       );
     }
@@ -61,7 +61,7 @@ function PropertyCard({ property }) {
         <button 
           className={`favorite-btn ${isLiked ? 'liked' : ''}`}
           onClick={handleLike}
-          aria-label="Add to favorites"
+          aria-label="Añadir a favoritos"
         >
           {isLiked ? '❤️' : '🤍'}
         </button>
@@ -102,7 +102,7 @@ function PropertyCard({ property }) {
         <div className="property-actions">
           {getActionButton()}
           <button className="btn-secondary">
-            📞 Call Now
+            📞 Llamar
           </button>
         </div>
       </div>

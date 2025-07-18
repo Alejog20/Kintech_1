@@ -63,7 +63,7 @@ function ContactModal({ isOpen, onClose, property }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="contact-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h3>Quick Inquiry</h3>
+          <h3>Consulta</h3>
           <button className="close-btn" onClick={onClose}>✕</button>
         </div>
 
@@ -74,9 +74,9 @@ function ContactModal({ isOpen, onClose, property }) {
               <h4>{property.title}</h4>
               <p>{property.location}</p>
               <span className="property-price">
-                {new Intl.NumberFormat('en-GB', {
+                {new Intl.NumberFormat('en-COP', {
                   style: 'currency',
-                  currency: 'GBP',
+                  currency: 'COP',
                   maximumFractionDigits: 0
                 }).format(property.price)}
               </span>
@@ -89,7 +89,7 @@ function ContactModal({ isOpen, onClose, property }) {
             <input
               type="text"
               name="name"
-              placeholder="Your Full Name"
+              placeholder="Nombre completo"
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -100,7 +100,7 @@ function ContactModal({ isOpen, onClose, property }) {
             <input
               type="email"
               name="email"
-              placeholder="Email Address"
+              placeholder="Correo electrónico"
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -120,17 +120,17 @@ function ContactModal({ isOpen, onClose, property }) {
               value={formData.inquiryType}
               onChange={handleInputChange}
             >
-              <option value="viewing">Book a Viewing</option>
-              <option value="info">Request Information</option>
-              <option value="mortgage">Mortgage Advice</option>
-              <option value="valuation">Property Valuation</option>
+              <option value="viewing">Agendar una visita</option>
+              <option value="info">Pedir más información</option>
+              <option value="mortgage">Consultar medios de pago</option>
+              <option value="valuation">Valoración de la propiedad</option>
             </select>
           </div>
 
           <div className="form-row">
             <textarea
               name="message"
-              placeholder="Any specific questions or requirements?"
+              placeholder="Alguna pregunta en especial o requerimiento?"
               value={formData.message}
               onChange={handleInputChange}
               rows="3"
@@ -140,13 +140,13 @@ function ContactModal({ isOpen, onClose, property }) {
           <div className="form-actions">
             {submitStatus === 'success' && (
               <div className="success-message">
-                ✅ Thank you! We'll be in touch within 24 hours.
+                ✅ Gracias! Estaremos en contact muy pronto. 
               </div>
             )}
             
             {submitStatus === 'error' && (
               <div className="error-message">
-                ❌ Something went wrong. Please try again.
+                ❌ Algo salio mal, por favor intenta de nuevo.
               </div>
             )}
 
@@ -163,15 +163,15 @@ function ContactModal({ isOpen, onClose, property }) {
         <div className="trust-indicators">
           <div className="trust-item">
             <span>🔒</span>
-            <small>Your details are secure</small>
+            <small>Tus detalles están seguros</small>
           </div>
           <div className="trust-item">
             <span>⚡</span>
-            <small>Response within 1 hour</small>
+            <small>Respuestas rápidas</small>
           </div>
           <div className="trust-item">
             <span>👥</span>
-            <small>Expert guidance</small>
+            <small>Guía de expertos</small>
           </div>
         </div>
       </div>

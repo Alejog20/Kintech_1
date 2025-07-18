@@ -1,5 +1,32 @@
 /* 🎨 PrimeProp Real Estate Styles
    Modern, trustworthy, and conversion-optimized design */
+/* 🎨 PrimeProp Real Estate Styles - Versión Final */
+
+/* --- Variables para el Modo Claro (por defecto) --- */
+:root {
+  --primary-color: #007A87;
+  --secondary-color: #FF5A5F;
+  --text-primary: #222222;
+  --text-secondary: #717171;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F7F7;
+  --border-color: #DDDDDD;
+  --shadow-color: rgba(0, 0, 0, 0.12);
+  --font-family: 'Inter', sans-serif;
+}
+
+/* --- Variables para el Modo Oscuro --- */
+/* Estas se activan cuando el body tiene la clase .dark-mode */
+body.dark-mode {
+  --primary-color: #1abc9c; /* Un verde más brillante para el modo oscuro */
+  --secondary-color: #FF5A5F;
+  --text-primary: #EAEAEA;
+  --text-secondary: #B0B0B0;
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
 
 * {
   margin: 0;
@@ -8,11 +35,64 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-family);
   line-height: 1.6;
-  color: #333;
-  background-color: #fafafa;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* --- Estilos de Componentes --- */
+/* Ahora todos los componentes que usan variables se adaptarán automáticamente */
+
+.header {
+  background: var(--primary-color);
+  /* ... */
+}
+
+.property-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  /* ... */
+}
+
+.search-bar {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  /* ... */
+}
+
+/* --- Estilos para el botón de cambio de tema --- */
+.theme-toggle-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(15deg) scale(1.1);
+}
+
+
+
+
 
 .container {
   max-width: 1200px;
@@ -1228,3 +1308,42 @@ body {
 .mb-2 { margin-bottom: 2rem; }
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
+
+
+/* --- Estilos para el nuevo botón de cambio de tema --- */
+.theme-toggle-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(15deg);
+}
+
+/* --- Asegúrate de que tu CSS maneje la clase del body --- */
+/* Ya tienes esto, pero es bueno confirmarlo */
+body.light-mode {
+  --text-primary: #222222;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F7F7;
+  /* ... resto de variables de modo claro */
+}
+
+body.dark-mode {
+  --text-primary: #ffffff;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  /* ... resto de variables de modo oscuro */
+}
+
+/* El resto de tus estilos que usan var(--variable) funcionarán automáticamente */

@@ -166,7 +166,7 @@ function RentalCalendar({ property, onBookRental }) {
   return (
     <div className="rental-calendar">
       <div className="calendar-header">
-        <h3>🏠 Book Your Stay</h3>
+        <h3>🏠 Alquila una propiedad</h3>
         <p>Select your check-in and check-out dates</p>
         <div className="price-display">
           <strong>£{property.pricePerNight || 120}</strong> per night
@@ -190,7 +190,7 @@ function RentalCalendar({ property, onBookRental }) {
         </div>
 
         <div className="guest-selection">
-          <label>Guests</label>
+          <label>Huéspedes</label>
           <select value={guests} onChange={(e) => setGuests(parseInt(e.target.value))}>
             {[...Array(property.maxGuests || 8)].map((_, i) => (
               <option key={i + 1} value={i + 1}>
@@ -258,17 +258,17 @@ function RentalCalendar({ property, onBookRental }) {
       {checkInDate && checkOutDate && (
         <div className="booking-summary">
           <div className="summary-details">
-            <h4>Booking Summary</h4>
+            <h4>Resúmen del Alquiler</h4>
             <div className="summary-line">
               <span>£{property.pricePerNight || 120} × {totalPrice.nights} nights</span>
               <span>£{totalPrice.subtotal}</span>
             </div>
             <div className="summary-line">
-              <span>Service fee</span>
+              <span>Tarifa de servicio</span>
               <span>£{totalPrice.serviceFee.toFixed(2)}</span>
             </div>
             <div className="summary-line">
-              <span>Cleaning fee</span>
+              <span>Tarifa de limpieza</span>
               <span>£{totalPrice.cleaningFee}</span>
             </div>
             <div className="summary-line total">
@@ -281,7 +281,7 @@ function RentalCalendar({ property, onBookRental }) {
             className="reserve-btn"
             onClick={() => setShowBookingForm(true)}
           >
-            Reserve Now
+            Reservar ahora
           </button>
         </div>
       )}
@@ -289,18 +289,18 @@ function RentalCalendar({ property, onBookRental }) {
       {showBookingForm && (
         <div className="booking-form-overlay">
           <div className="booking-form">
-            <h4>Complete Your Booking</h4>
+            <h4>Completa tu reserva</h4>
             <div className="booking-details">
-              <p><strong>Property:</strong> {property.title}</p>
+              <p><strong>Propiedad:</strong> {property.title}</p>
               <p><strong>Check-in:</strong> {checkInDate.toLocaleDateString('en-GB')}</p>
               <p><strong>Check-out:</strong> {checkOutDate.toLocaleDateString('en-GB')}</p>
-              <p><strong>Guests:</strong> {guests}</p>
+              <p><strong>Huéspedes:</strong> {guests}</p>
               <p><strong>Total:</strong> £{totalPrice.total.toFixed(2)}</p>
             </div>
 
             <form onSubmit={handleBookingSubmit}>
               <div className="form-group">
-                <label>Full Name *</label>
+                <label>Nombre completo *</label>
                 <input
                   type="text"
                   value={bookingData.name}
@@ -310,7 +310,7 @@ function RentalCalendar({ property, onBookRental }) {
               </div>
 
               <div className="form-group">
-                <label>Email *</label>
+                <label>Correo eléctronico *</label>
                 <input
                   type="email"
                   value={bookingData.email}
@@ -320,7 +320,7 @@ function RentalCalendar({ property, onBookRental }) {
               </div>
 
               <div className="form-group">
-                <label>Phone Number *</label>
+                <label>Número de celular *</label>
                 <input
                   type="tel"
                   value={bookingData.phone}
@@ -330,11 +330,11 @@ function RentalCalendar({ property, onBookRental }) {
               </div>
 
               <div className="form-group">
-                <label>Special Requests (Optional)</label>
+                <label>Solicitud especial (Opcional)</label>
                 <textarea
                   value={bookingData.specialRequests}
                   onChange={(e) => setBookingData({...bookingData, specialRequests: e.target.value})}
-                  placeholder="Any special requirements for your stay?"
+                  placeholder="Algún requerimiento especial para la llegada?"
                   rows="3"
                 />
               </div>
@@ -342,7 +342,7 @@ function RentalCalendar({ property, onBookRental }) {
               <div className="airbnb-sync">
                 <div className="sync-info">
                   <span className="airbnb-icon">🅰️</span>
-                  <span>This booking will be synchronized with Airbnb</span>
+                  <span>Esta reserva se sincornizará con Airbnb</span>
                 </div>
               </div>
 
@@ -351,7 +351,7 @@ function RentalCalendar({ property, onBookRental }) {
                   Cancel
                 </button>
                 <button type="submit" className="btn-primary">
-                  Confirm Booking
+                  Confirmar Reserva
                 </button>
               </div>
             </form>
@@ -362,15 +362,15 @@ function RentalCalendar({ property, onBookRental }) {
       <div className="calendar-legend">
         <div className="legend-item">
           <span className="legend-color available"></span>
-          <span>Available</span>
+          <span>Disponible</span>
         </div>
         <div className="legend-item">
           <span className="legend-color booked"></span>
-          <span>Booked</span>
+          <span>No disponible</span>
         </div>
         <div className="legend-item">
           <span className="legend-color selected"></span>
-          <span>Selected dates</span>
+          <span>Fechas seleccionadas</span>
         </div>
       </div>
     </div>
