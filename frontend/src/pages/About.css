@@ -1,0 +1,101 @@
+.about-us-page .language-toggle-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.about-hero {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200') no-repeat center center/cover;
+  color: white;
+  padding: 5rem 0;
+}
+
+.about-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  margin-top: 1rem;
+}
+
+.about-mission-vision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 4rem 20px;
+}
+
+.about-mission-vision .info-card {
+  background: var(--bg-primary);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.info-card h3 {
+  color: var(--accent-color);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.about-team {
+  padding: 4rem 0;
+  background: var(--bg-secondary);
+}
+
+.about-team .section-title {
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.team-member {
+  text-align: center;
+  background: var(--bg-primary);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border: 4px solid var(--accent-color);
+}
+
+.team-member h4 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.team-member p {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .about-mission-vision {
+    grid-template-columns: 1fr;
+  }
+}

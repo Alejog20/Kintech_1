@@ -1,0 +1,124 @@
+/* --- Footer Styles --- */
+.footer {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-light);
+  padding: 50px 0 30px;
+  position: relative;
+  font-family: var(--font-family);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h1,
+.footer-section h2 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.footer-section .logo {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-section .logo-icon {
+    margin-right: 8px;
+}
+
+.footer-section p {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.footer-section .socials a {
+  color: var(--text-secondary);
+  margin-right: 15px;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.footer-section .socials a:hover {
+  color: var(--accent-color);
+}
+
+.footer-section.links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section.links ul a {
+  display: block;
+  margin-bottom: 12px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-section.links ul a:hover {
+  color: var(--accent-color);
+  padding-left: 5px;
+}
+
+.footer-section .contact-input {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  width: 100%;
+  padding: .8rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-family: var(--font-family);
+  transition: border-color 0.3s ease;
+}
+
+.footer-section .contact-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.footer-section .btn-primary {
+  width: 100%;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-section .btn-primary:hover {
+  background: #5a6fd8; /* A slightly darker shade of the accent color */
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-section .socials {
+    margin-bottom: 2rem;
+  }
+}

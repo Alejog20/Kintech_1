@@ -1,94 +1,315 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react'; // 1. Importar useContext
 import { Link } from 'react-router-dom';
+import { LanguageContext } from '../context/LanguageContext'; // 2. Importar el contexto
 
 function Home() {
+  const { language } = useContext(LanguageContext); // 3. Usar el contexto global
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
+  // 4. Eliminar el estado local de idioma: const [language, setLanguage] = useState('es');
 
-  useEffect(() => {
-    fetchProperties();
-  }, []);
-
-  const fetchProperties = async () => {
-    try {
-      const response = await fetch('/properties');
-      const data = await response.json();
-      setProperties(data);
-      setFilteredProperties(data);
-      setLoading(false);
-    } catch (err) {
-      // Mock data fallback with both sale and rental properties
-      const mockData = [
-        {
-          id: 1,
-          title: "Modern Family Home",
-          type: "sale",
-          price: 450000,
-          location: "Hampstead, London",
-          bedrooms: 3,
-          bathrooms: 2,
-          sqft: 1850,
-          image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
-          description: "Beautiful modern family home in prestigious Hampstead area.",
-          features: ["Garden", "Parking", "Modern Kitchen"],
-          agent: "Sarah Wilson",
-          phone: "+44 20 7946 0958"
-        },
-        {
-          id: 2,
-          title: "City Centre Apartment",
-          type: "rental",
-          pricePerNight: 150,
-          maxGuests: 4,
-          location: "Canary Wharf, London",
-          bedrooms: 2,
-          bathrooms: 1,
-          sqft: 950,
-          image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
-          description: "Stunning apartment with panoramic city views.",
-          features: ["Concierge", "Gym", "Balcony"],
-          agent: "James Thompson",
-          phone: "+44 20 7946 0959"
-        },
-        {
-          id: 3,
-          title: "Victorian Townhouse",
-          type: "sale",
-          price: 650000,
-          location: "Richmond, London",
-          bedrooms: 4,
-          bathrooms: 3,
-          sqft: 2400,
-          image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop",
-          description: "Charming Victorian townhouse with period features.",
-          features: ["Period Features", "Large Garden", "Parking"],
-          agent: "Emma Clarke",
-          phone: "+44 20 7946 0960"
-        },
-        {
-          id: 4,
-          title: "Luxury Studio Apartment",
-          type: "rental",
-          pricePerNight: 95,
-          maxGuests: 2,
-          location: "Shoreditch, London",
-          bedrooms: 1,
-          bathrooms: 1,
-          sqft: 500,
-          image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
-          description: "Modern studio apartment in trendy Shoreditch.",
-          features: ["WiFi", "Kitchen", "Workspace"],
-          agent: "David Lee",
-          phone: "+44 20 7946 0961"
-        }
-      ];
-      setProperties(mockData);
-      setFilteredProperties(mockData);
-      setLoading(false);
+  const translations = {
+    es: {
+      heroTitle: "Encuentra tu Lugar Ideal",
+      heroSubtitle: "Explora propiedades exclusivas para comprar o alquilar en los mejores destinos de Colombia.",
+      loadingText: "Cargando propiedades...",
+      browseProperties: "Propiedades Destacadas",
+      allProperties: "Todas",
+      forSale: "En Venta", 
+      forRent: "En Alquiler",
+      currency: "COP",
+      perNight: "/noche",
+      viewDetails: "Ver Detalles"
+    },
+    en: {
+      heroTitle: "Find Your Ideal Place",
+      heroSubtitle: "Explore exclusive properties to buy or rent in the best destinations in Colombia.",
+      loadingText: "Loading properties...",
+      browseProperties: "Featured Properties",
+      allProperties: "All",
+      forSale: "For Sale",
+      forRent: "For Rent", 
+      currency: "USD",
+      perNight: "/night",
+      viewDetails: "View Details"
     }
   };
+
+  // ... (El resto del código de mockData, fetchProperties, etc., permanece igual)
+  const mockDataES = [
+    {
+      id: 1,
+      title: "Villa de Lujo Frente al Mar",
+      type: "sale",
+      price: 2800000000,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 5,
+      bathrooms: 6,
+      sqft: 450,
+      image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop",
+      description: "Espectacular villa moderna con acceso directo a la playa, piscina infinita y acabados de lujo.",
+      features: ["Playa Privada", "Piscina Infinita", "Gimnasio"],
+      agent: "Laura Gómez",
+    },
+    {
+      id: 2,
+      title: "Apartamento Ejecutivo Centro Histórico",
+      type: "rental",
+      pricePerNight: 450000,
+      location: "Ciudad Amurallada, Cartagena",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 120,
+      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop",
+      description: "Elegante apartamento colonial restaurado en el corazón del centro histórico.",
+      features: ["Balcón Colonial", "AC Central", "WiFi"],
+      agent: "Carlos Rivas",
+    },
+    {
+      id: 3,
+      title: "Penthouse Moderno Bocagrande",
+      type: "sale",
+      price: 3500000000,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 4,
+      bathrooms: 5,
+      sqft: 380,
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      description: "Exclusivo penthouse con terraza panorámica y vista 360° al mar Caribe.",
+      features: ["Terraza 360°", "Jacuzzi", "Ascensor Privado"],
+      agent: "Sofía Pérez",
+    },
+    {
+      id: 4,
+      title: "Casa Colonial Getsemaní",
+      type: "rental",
+      pricePerNight: 380000,
+      location: "Getsemaní, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 200,
+      image: "https://images.unsplash.com/photo-1617826359993-23a5165b4617?w=800&h=600&fit=crop",
+      description: "Auténtica casa colonial con patio central y arte urbano en las cercanías.",
+      features: ["Patio Central", "Arte Local", "Cocina Gourmet"],
+      agent: "Andrés Jaramillo",
+    },
+    {
+      id: 5,
+      title: "Apartamento Moderno Manga",
+      type: "sale",
+      price: 1200000000,
+      location: "Manga, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 180,
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
+      description: "Moderno apartamento en exclusivo conjunto residencial con amenidades completas.",
+      features: ["Piscina", "Zona BBQ", "Seguridad 24h"],
+      agent: "María Fernández",
+    },
+    {
+      id: 6,
+      title: "Loft Artístico La Matuna",
+      type: "rental",
+      pricePerNight: 320000,
+      location: "La Matuna, Cartagena",
+      bedrooms: 1,
+      bathrooms: 1,
+      sqft: 85,
+      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+      description: "Creativo loft con diseño moderno en el emergente barrio de La Matuna.",
+      features: ["Diseño Único", "Luz Natural", "Zona Trabajo"],
+      agent: "Diego Martínez",
+    },
+    {
+      id: 7,
+      title: "Casa Republicana San Diego",
+      type: "sale",
+      price: 1800000000,
+      location: "San Diego, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 320,
+      image: "https://images.unsplash.com/photo-1628744444594-5a345107e335?w=800&h=600&fit=crop",
+      description: "Elegante casa republicana restaurada con detalles arquitectónicos originales.",
+      features: ["Arquitectura Original", "Patio Colonial", "Parking"],
+      agent: "Isabella Torres",
+    },
+    {
+      id: 8,
+      title: "Estudio Boutique Castillogrande",
+      type: "rental",
+      pricePerNight: 280000,
+      location: "Castillogrande, Cartagena",
+      bedrooms: 1,
+      bathrooms: 1,
+      sqft: 65,
+      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop",
+      description: "Acogedor estudio con vista al mar en la exclusiva zona de Castillogrande.",
+      features: ["Vista al Mar", "Kitchenette", "Balcón"],
+      agent: "Camila Rodríguez",
+    },
+    {
+      id: 9,
+      title: "Villa Familiar El Laguito",
+      type: "sale",
+      price: 2200000000,
+      location: "El Laguito, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 350,
+      image: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=800&h=600&fit=crop",
+      description: "Espaciosa villa familiar con jardín privado y acceso directo a la laguna.",
+      features: ["Jardín Privado", "Acceso Laguna", "Zona Niños"],
+      agent: "Roberto Vargas",
+    }
+  ];
+  const mockDataEN = [
+    {
+      id: 1,
+      title: "Luxury Oceanfront Villa",
+      type: "sale",
+      price: 750000,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 5,
+      bathrooms: 6,
+      sqft: 4850,
+      image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop",
+      description: "Spectacular modern villa with direct beach access, infinity pool and luxury finishes.",
+      features: ["Private Beach", "Infinity Pool", "Gym"],
+      agent: "Laura Gómez",
+    },
+    {
+      id: 2,
+      title: "Historic Executive Apartment",
+      type: "rental",
+      pricePerNight: 120,
+      location: "Walled City, Cartagena",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 1290,
+      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop",
+      description: "Elegant restored colonial apartment in the heart of the historic center.",
+      features: ["Colonial Balcony", "Central AC", "WiFi"],
+      agent: "Carlos Rivas",
+    },
+    {
+      id: 3,
+      title: "Modern Bocagrande Penthouse",
+      type: "sale",
+      price: 950000,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 4,
+      bathrooms: 5,
+      sqft: 4090,
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      description: "Exclusive penthouse with panoramic terrace and 360° Caribbean Sea views.",
+      features: ["360° Terrace", "Jacuzzi", "Private Elevator"],
+      agent: "Sofia Pérez",
+    },
+    {
+      id: 4,
+      title: "Colonial Getsemaní House",
+      type: "rental",
+      pricePerNight: 95,
+      location: "Getsemaní, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 2150,
+      image: "https://images.unsplash.com/photo-1617826359993-23a5165b4617?w=800&h=600&fit=crop",
+      description: "Authentic colonial house with central courtyard and street art nearby.",
+      features: ["Central Courtyard", "Local Art", "Gourmet Kitchen"],
+      agent: "Andrés Jaramillo",
+    },
+    {
+      id: 5,
+      title: "Modern Manga Apartment",
+      type: "sale",
+      price: 320000,
+      location: "Manga, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 1940,
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
+      description: "Modern apartment in exclusive residential complex with complete amenities.",
+      features: ["Pool", "BBQ Area", "24h Security"],
+      agent: "María Fernández",
+    },
+    {
+      id: 6,
+      title: "Artistic La Matuna Loft",
+      type: "rental",
+      pricePerNight: 85,
+      location: "La Matuna, Cartagena",
+      bedrooms: 1,
+      bathrooms: 1,
+      sqft: 915,
+      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+      description: "Creative loft with modern design in the emerging La Matuna neighborhood.",
+      features: ["Unique Design", "Natural Light", "Work Space"],
+      agent: "Diego Martínez",
+    },
+    {
+      id: 7,
+      title: "Republican San Diego House",
+      type: "sale",
+      price: 480000,
+      location: "San Diego, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 3440,
+      image: "https://images.unsplash.com/photo-1628744444594-5a345107e335?w=800&h=600&fit=crop",
+      description: "Elegant restored republican house with original architectural details.",
+      features: ["Original Architecture", "Colonial Patio", "Parking"],
+      agent: "Isabella Torres",
+    },
+    {
+      id: 8,
+      title: "Boutique Castillogrande Studio",
+      type: "rental",
+      pricePerNight: 75,
+      location: "Castillogrande, Cartagena",
+      bedrooms: 1,
+      bathrooms: 1,
+      sqft: 700,
+      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop",
+      description: "Cozy studio with sea view in the exclusive Castillogrande area.",
+      features: ["Sea View", "Kitchenette", "Balcony"],
+      agent: "Camila Rodríguez",
+    },
+    {
+      id: 9,
+      title: "Family Villa El Laguito",
+      type: "sale",
+      price: 590000,
+      location: "El Laguito, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 3770,
+      image: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=800&h=600&fit=crop",
+      description: "Spacious family villa with private garden and direct lagoon access.",
+      features: ["Private Garden", "Lagoon Access", "Kids Area"],
+      agent: "Roberto Vargas",
+    }
+  ];
+
+  useEffect(() => {
+    const fetchProperties = () => {
+      setLoading(true);
+      try {
+        const mockData = language === 'es' ? mockDataES : mockDataEN;
+        setProperties(mockData);
+        setFilteredProperties(mockData);
+      } catch (err) {
+        console.error("Error fetching properties:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProperties();
+  }, [language]);
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
@@ -100,45 +321,49 @@ function Home() {
   };
 
   const formatPrice = (property) => {
+    const currency = translations[language].currency;
+    const locale = language === 'es' ? 'es-CO' : 'en-US';
+    
     if (property.type === 'rental') {
-      return new Intl.NumberFormat('en-GB', {
+      return new Intl.NumberFormat(locale, {
         style: 'currency',
-        currency: 'GBP',
+        currency: currency,
         maximumFractionDigits: 0
-      }).format(property.pricePerNight || 120) + '/night';
+      }).format(property.pricePerNight) + translations[language].perNight;
     } else {
-      return new Intl.NumberFormat('en-GB', {
+      return new Intl.NumberFormat(locale, {
         style: 'currency',
-        currency: 'GBP',
+        currency: currency,
         maximumFractionDigits: 0
       }).format(property.price);
     }
   };
 
-  if (loading) return <div className="loading">Loading properties...</div>;
+  const t = translations[language];
+
+  if (loading) return <div className="loading">{t.loadingText}</div>;
 
   return (
     <div className="home">
+      {/* 5. Eliminar el botón de idioma de aquí */}
+
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">Find Your Perfect Property in London</h1>
-          <p className="hero-subtitle">
-            Whether you're looking to buy your dream home or book a perfect rental, 
-            we have exceptional properties with expert guidance.
-          </p>
+          <h1 className="hero-title">{t.heroTitle}</h1>
+          <p className="hero-subtitle">{t.heroSubtitle}</p>
           <div className="hero-stats">
             <div className="stat">
               <strong>500+</strong>
-              <span>Properties</span>
+              <span>Propiedades</span>
             </div>
             <div className="stat">
               <strong>98%</strong>
-              <span>Satisfaction</span>
+              <span>Satisfacción</span>
             </div>
             <div className="stat">
               <strong>15+</strong>
-              <span>Years Experience</span>
+              <span>Años de experiencia</span>
             </div>
           </div>
         </div>
@@ -148,25 +373,25 @@ function Home() {
       <section className="filter-section">
         <div className="container">
           <div className="property-filters">
-            <h2>Browse Properties</h2>
+            <h2>{t.browseProperties}</h2>
             <div className="filter-buttons">
               <button 
                 className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
                 onClick={() => handleFilterChange('all')}
               >
-                All Properties ({properties.length})
+                {t.allProperties} ({properties.length})
               </button>
               <button 
                 className={`filter-btn ${activeFilter === 'sale' ? 'active' : ''}`}
                 onClick={() => handleFilterChange('sale')}
               >
-                For Sale ({properties.filter(p => p.type === 'sale').length})
+                {t.forSale} ({properties.filter(p => p.type === 'sale').length})
               </button>
               <button 
                 className={`filter-btn ${activeFilter === 'rental' ? 'active' : ''}`}
                 onClick={() => handleFilterChange('rental')}
               >
-                For Rent ({properties.filter(p => p.type === 'rental').length})
+                {t.forRent} ({properties.filter(p => p.type === 'rental').length})
               </button>
             </div>
           </div>
@@ -183,7 +408,7 @@ function Home() {
                   <img src={property.image} alt={property.title} />
                   <div className="property-price">{formatPrice(property)}</div>
                   <div className={`property-type-badge ${property.type}`}>
-                    {property.type === 'rental' ? 'For Rent' : 'For Sale'}
+                    {property.type === 'rental' ? t.forRent : t.forSale}
                   </div>
                 </div>
                 <div className="property-content">
@@ -193,9 +418,6 @@ function Home() {
                     <span className="feature">🛏️ {property.bedrooms} bed</span>
                     <span className="feature">🚿 {property.bathrooms} bath</span>
                     <span className="feature">📐 {property.sqft} sqft</span>
-                    {property.type === 'rental' && (
-                      <span className="feature">👥 {property.maxGuests || 4} guests</span>
-                    )}
                   </div>
                   <p className="property-description">
                     {property.description.substring(0, 100)}...
@@ -204,67 +426,12 @@ function Home() {
                     to={`/property/${property.id}`} 
                     className="view-details-btn"
                   >
-                    {property.type === 'rental' ? 'Check Availability' : 'Schedule Tour'}
+                    {t.viewDetails}
                   </Link>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Business Models Section */}
-      <section className="business-models-section">
-        <div className="container">
-          <h2>Our Services</h2>
-          <div className="business-models-grid">
-            <div className="business-model">
-              <div className="model-icon">🏠</div>
-              <h3>Property Sales</h3>
-              <p>Find your dream home with our expert guidance. Schedule personalized tours and get professional advice throughout the buying process.</p>
-              <ul>
-                <li>✓ Expert property consultations</li>
-                <li>✓ Guided property tours</li>
-                <li>✓ Market analysis and pricing</li>
-                <li>✓ End-to-end buying support</li>
-              </ul>
-              <button 
-                className="cta-button"
-                onClick={() => handleFilterChange('sale')}
-              >
-                Browse Properties for Sale
-              </button>
-            </div>
-            
-            <div className="business-model">
-              <div className="model-icon">🗓️</div>
-              <h3>Short-term Rentals</h3>
-              <p>Book perfect accommodations for your London stay. Integrated with Airbnb for seamless booking and availability management.</p>
-              <ul>
-                <li>✓ Instant booking confirmation</li>
-                <li>✓ Real-time availability</li>
-                <li>✓ Airbnb synchronization</li>
-                <li>✓ Professional property management</li>
-              </ul>
-              <button 
-                className="cta-button"
-                onClick={() => handleFilterChange('rental')}
-              >
-                Browse Rental Properties
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="cta-section">
-        <div className="container">
-          <h2>Ready to Find Your Perfect Property?</h2>
-          <p>Our expert team is here to guide you every step of the way</p>
-          <Link to="/contact" className="cta-button-large">
-            Get Started Today
-          </Link>
         </div>
       </section>
     </div>

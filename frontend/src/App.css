@@ -13,12 +13,14 @@
   --border-color: #DDDDDD;
   --shadow-color: rgba(0, 0, 0, 0.12);
   --font-family: 'Inter', sans-serif;
+  --accent-color: #667eea;
+  --bg-tertiary: #f8f9fa;
+  --border-light: #e1e5e9;
 }
 
 /* --- Variables para el Modo Oscuro --- */
-/* Estas se activan cuando el body tiene la clase .dark-mode */
 body.dark-mode {
-  --primary-color: #1abc9c; /* Un verde más brillante para el modo oscuro */
+  --primary-color: #1abc9c;
   --secondary-color: #FF5A5F;
   --text-primary: #EAEAEA;
   --text-secondary: #B0B0B0;
@@ -26,6 +28,9 @@ body.dark-mode {
   --bg-secondary: #1E1E1E;
   --border-color: #333333;
   --shadow-color: rgba(0, 0, 0, 0.4);
+  --accent-color: #4dabf7;
+  --bg-tertiary: #2d2d2d;
+  --border-light: #404040;
 }
 
 * {
@@ -52,7 +57,7 @@ body {
 /* Ahora todos los componentes que usan variables se adaptarán automáticamente */
 
 .header {
-  background: var(--primary-color);
+    background: linear-gradient(135deg, var(--accent-color) 0%, #764ba2 100%);
   /* ... */
 }
 
@@ -71,25 +76,36 @@ body {
 }
 
 /* --- Estilos para el botón de cambio de tema --- */
-.theme-toggle-button {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent-color);
   color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
   cursor: pointer;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px var(--shadow-color);
   transition: all 0.3s ease;
+  z-index: 1000;
+  font-weight: 500;
 }
 
-.theme-toggle-button:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: rotate(15deg) scale(1.1);
+.dark-mode-toggle:hover {
+  transform: translateY(-2px);
 }
 
+.toggle-icon {
+  font-size: 18px;
+}
+
+.toggle-text {
+  font-weight: 500;
+}
 
 
 
@@ -102,7 +118,7 @@ body {
 
 /* 🧭 Header Styles */
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #764ba2 100%);
   color: white;
   padding: 1rem 0;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -164,6 +180,27 @@ body {
   color: #667eea;
 }
 
+
+/* Estilos para el botón de idioma en la barra de navegación */
+.language-toggle-btn-nav {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.language-toggle-btn-nav:hover {
+  background: white;
+  color: var(--accent-color);
+}
+
+
+
 /* 🏡 Home Page Styles */
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -208,15 +245,14 @@ body {
   font-size: 0.9rem;
 }
 
-/* Filter Section */
 .filter-section {
   padding: 2rem 0;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .property-filters h2 {
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .filter-buttons {
@@ -227,9 +263,9 @@ body {
 
 .filter-btn {
   padding: 0.75rem 1.5rem;
-  border: 2px solid #667eea;
-  background: white;
-  color: #667eea;
+  border: 2px solid var(--accent-color);
+  background: var(--bg-primary);
+  color: var(--accent-color);
   border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
@@ -238,7 +274,7 @@ body {
 
 .filter-btn.active,
 .filter-btn:hover {
-  background: #667eea;
+  background: var(--accent-color);
   color: white;
 }
 
@@ -1345,5 +1381,3 @@ body.dark-mode {
   --bg-secondary: #2d2d2d;
   /* ... resto de variables de modo oscuro */
 }
-
-/* El resto de tus estilos que usan var(--variable) funcionarán automáticamente */
