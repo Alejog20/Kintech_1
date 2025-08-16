@@ -6,13 +6,14 @@
     "api": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.0"
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "react-scripts": "5.0.1",
-    "json-server": "^1.0.0"
+    "json-server": "^0.17.4"
   },
   "eslintConfig": {
     "extends": []

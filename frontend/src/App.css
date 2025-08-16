@@ -1,5 +1,3 @@
-/* 🎨 PrimeProp Real Estate Styles
-   Modern, trustworthy, and conversion-optimized design */
 /* 🎨 PrimeProp Real Estate Styles - Versión Final */
 
 /* --- Variables para el Modo Claro (por defecto) --- */
@@ -808,7 +806,7 @@ body {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {

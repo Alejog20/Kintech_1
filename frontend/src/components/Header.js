@@ -1,30 +1,34 @@
-import React, { useContext } from 'react'; // Importar useContext
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
-import LanguageToggle from './LanguageToggle'; // 1. Importar el nuevo componente de idioma
-import { LanguageContext } from '../context/LanguageContext'; // 2. Importar el contexto de idioma
+import LanguageToggle from './LanguageToggle';
+import { LanguageContext } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext'; // Import useAuth hook
 
 function Header() {
-  // 3. Usar el contexto para obtener el idioma actual
   const { language } = useContext(LanguageContext);
+  const { isAuthenticated, user, logout } = useAuth(); // Get auth state
 
-  // Objeto con las traducciones para los enlaces de navegación
   const navLinks = {
     es: {
       properties: 'Propiedades',
       about: 'Conócenos',
       contact: 'Contacto',
-      login: 'Iniciar Sesión'
+      login: 'Iniciar Sesión',
+      register: 'Registrarse',
+      logout: 'Cerrar Sesión'
     },
     en: {
       properties: 'Properties',
       about: 'About Us',
       contact: 'Contact',
-      login: 'Login'
+      login: 'Login',
+      register: 'Register',
+      logout: 'Logout'
     }
   };
 
-  const t = navLinks[language]; // Seleccionar la traducción correcta
+  const t = navLinks[language];
 
   return (
     <header className="header">
@@ -36,13 +40,22 @@ function Header() {
           </Link>
           
           <nav className="nav-menu">
-            {/* 4. Usar las traducciones en los enlaces */}
             <Link to="/" className="nav-link">{t.properties}</Link>
             <Link to="/about" className="nav-link">{t.about}</Link>
             <Link to="/contact" className="nav-link">{t.contact}</Link>
-            <button className="cta-button">{t.login}</button>
             
-            {/* 5. Añadir los componentes de toggle */}
+            {isAuthenticated ? (
+              <>
+                <span className="nav-link">Welcome, {user.name}!</span>
+                <button onClick={logout} className="cta-button">{t.logout}</button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="nav-link">{t.login}</Link>
+                <Link to="/register" className="cta-button">{t.register}</Link>
+              </>
+            )}
+            
             <ThemeToggle /> 
             <LanguageToggle />
           </nav>
