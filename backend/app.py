@@ -3,9 +3,8 @@ from flask_cors import CORS
 import json
 
 app = Flask(__name__)
-CORS(app)  # Enable Cross-Origin Resource Sharing for React
+CORS(app)  
 
-# Sample property data - In production, this would come from a database
 properties = [
     {
         "id": 1,
@@ -80,7 +79,7 @@ def contact_inquiry():
     """Handle contact form submissions"""
     data = request.get_json()
     
-    # In production, you'd save this to a database and send emails
+    # In production, save this to a database and send emails
     inquiry = {
         'name': data.get('name'),
         'email': data.get('email'),
@@ -94,9 +93,9 @@ def contact_inquiry():
     return jsonify({'success': True, 'message': 'Thank you for your inquiry! We\'ll be in touch soon.'})
 
 if __name__ == '__main__':
-    print("🏠 Real Estate API Server Starting...")
-    print("🌐 Server running on http://localhost:5000")
-    print("📊 API Endpoints:")
+    print("  Real Estate API Server Starting...")
+    print("  Server running on http://localhost:5000")
+    print("  API Endpoints:")
     print("   GET  /api/properties - List all properties")
     print("   GET  /api/properties/<id> - Get specific property")
     print("   POST /api/contact - Submit contact form")

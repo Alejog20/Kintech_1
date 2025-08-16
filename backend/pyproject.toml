@@ -3,11 +3,15 @@ name = "realestate-backend"
 version = "0.1.0"
 description = "PrimeProp Real Estate Backend API"
 authors = [
-    { name = "Alejandro", email = "dev@primeprop.com" }
+    { name = "kintec", email = "kintec@gmail.com" }
 ]
 dependencies = [
     "flask>=2.3.3",
+    "flask-bcrypt>=1.0.1",
     "flask-cors>=4.0.0",
+    "flask-jwt-extended>=4.6.0",
+    "flask-migrate>=4.1.0",
+    "flask-sqlalchemy>=3.1.1",
     "python-dotenv>=1.0.0",
 ]
 requires-python = ">=3.8.1"
@@ -22,3 +26,7 @@ dev-dependencies = [
     "black>=23.0.0",
     "flake8>=6.0.0",
 ]
+
+# This new section tells the build system which files to include.
+[tool.hatch.build.targets.wheel]
+include = ["/app.py"]
