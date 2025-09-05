@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'; // 1. Importar useContext
 import { Link } from 'react-router-dom';
 import { LanguageContext } from '../context/LanguageContext'; // 2. Importar el contexto
+import LuxurySearchBar from '../components/LuxurySearchBar';
+import WhatsAppFloat from '../components/WhatsAppFloat';
 
 function Home() {
   const { language } = useContext(LanguageContext); // 3. Usar el contexto global
@@ -12,28 +14,42 @@ function Home() {
 
   const translations = {
     es: {
-      heroTitle: "Encuentra tu Lugar Ideal",
-      heroSubtitle: "Explora propiedades exclusivas para comprar o alquilar en los mejores destinos de Colombia.",
-      loadingText: "Cargando propiedades...",
-      browseProperties: "Propiedades Destacadas",
+      heroTitle: "Vive el Lujo Caribeño",
+      heroSubtitle: "Descubre propiedades extraordinarias en Cartagena de Indias. Cada residencia cuenta una historia de elegancia, exclusividad y sofisticación frente al mar Caribe.",
+      heroTagline: "Donde la historia colonial se encuentra con el lujo moderno",
+      loadingText: "Cargando colección exclusiva...",
+      browseProperties: "Colección Exclusiva",
       allProperties: "Todas",
       forSale: "En Venta", 
       forRent: "En Alquiler",
       currency: "COP",
       perNight: "/noche",
-      viewDetails: "Ver Detalles"
+      viewDetails: "Explorar Propiedad",
+      luxuryBadge: "🏖️ Especialistas en Cartagena",
+      trustSignals: {
+        certified: "✓ Avalúos Certificados",
+        legal: "✓ Proceso Legal Garantizado", 
+        financing: "✓ Financiación Exclusiva"
+      }
     },
     en: {
-      heroTitle: "Find Your Ideal Place",
-      heroSubtitle: "Explore exclusive properties to buy or rent in the best destinations in Colombia.",
-      loadingText: "Loading properties...",
-      browseProperties: "Featured Properties",
+      heroTitle: "Experience Caribbean Luxury",
+      heroSubtitle: "Discover extraordinary properties in Cartagena de Indias. Each residence tells a story of elegance, exclusivity and sophistication by the Caribbean Sea.",
+      heroTagline: "Where colonial history meets modern luxury",
+      loadingText: "Loading exclusive collection...",
+      browseProperties: "Exclusive Collection",
       allProperties: "All",
       forSale: "For Sale",
       forRent: "For Rent", 
       currency: "USD",
       perNight: "/night",
-      viewDetails: "View Details"
+      viewDetails: "Explore Property",
+      luxuryBadge: "🏖️ Cartagena Specialists",
+      trustSignals: {
+        certified: "✓ Certified Appraisals",
+        legal: "✓ Guaranteed Legal Process",
+        financing: "✓ Exclusive Financing"
+      }
     }
   };
 
@@ -296,14 +312,46 @@ function Home() {
   ];
 
   useEffect(() => {
-    const fetchProperties = () => {
+    const fetchProperties = async () => {
       setLoading(true);
       try {
+        // Fetch from real API
+        const response = await fetch('http://localhost:5001/api/properties');
+        const data = await response.json();
+        
+        if (data.success) {
+          // Transform API data to match frontend format
+          const transformedProperties = data.data.map(property => ({
+            id: property.id,
+            title: property.title,
+            type: property.type,
+            price: property.price,
+            pricePerNight: property.price_per_night,
+            location: property.location,
+            bedrooms: property.bedrooms,
+            bathrooms: property.bathrooms,
+            sqft: property.sqft,
+            image: property.image_url,
+            description: property.description,
+            features: property.features || [],
+            agent: property.agent_name || 'Agente Especializado'
+          }));
+          
+          setProperties(transformedProperties);
+          setFilteredProperties(transformedProperties);
+        } else {
+          // Fallback to mock data if API fails
+          console.warn('API failed, using mock data');
+          const mockData = language === 'es' ? mockDataES : mockDataEN;
+          setProperties(mockData);
+          setFilteredProperties(mockData);
+        }
+      } catch (err) {
+        console.error("Error fetching properties:", err);
+        // Fallback to mock data
         const mockData = language === 'es' ? mockDataES : mockDataEN;
         setProperties(mockData);
         setFilteredProperties(mockData);
-      } catch (err) {
-        console.error("Error fetching properties:", err);
       } finally {
         setLoading(false);
       }
@@ -339,6 +387,67 @@ function Home() {
     }
   };
 
+  const handleSearch = async (searchData) => {
+    console.log('Search performed:', searchData);
+    setLoading(true);
+    
+    try {
+      let url = 'http://localhost:5001/api/properties';
+      const params = new URLSearchParams();
+      
+      if (searchData.query && searchData.query.trim()) {
+        url = 'http://localhost:5001/api/properties/search';
+        params.append('q', searchData.query.trim());
+      }
+      
+      if (searchData.type && searchData.type !== 'all') {
+        params.append('type', searchData.type);
+      }
+      
+      if (searchData.location) {
+        params.append('location', searchData.location);
+      }
+      
+      const fullUrl = params.toString() ? `${url}?${params.toString()}` : url;
+      const response = await fetch(fullUrl);
+      const data = await response.json();
+      
+      if (data.success) {
+        const transformedProperties = data.data.map(property => ({
+          id: property.id,
+          title: property.title,
+          type: property.type,
+          price: property.price,
+          pricePerNight: property.price_per_night,
+          location: property.location,
+          bedrooms: property.bedrooms,
+          bathrooms: property.bathrooms,
+          sqft: property.sqft,
+          image: property.image_url,
+          description: property.description,
+          features: property.features || [],
+          agent: property.agent_name || 'Agente Especializado'
+        }));
+        
+        setFilteredProperties(transformedProperties);
+        setActiveFilter('all'); // Reset filter when searching
+      }
+    } catch (error) {
+      console.error('Search error:', error);
+      // Fallback to local filtering if API fails
+      if (searchData.query) {
+        const filtered = properties.filter(property =>
+          property.title.toLowerCase().includes(searchData.query.toLowerCase()) ||
+          property.location.toLowerCase().includes(searchData.query.toLowerCase()) ||
+          property.description.toLowerCase().includes(searchData.query.toLowerCase())
+        );
+        setFilteredProperties(filtered);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const t = translations[language];
 
   if (loading) return <div className="loading">{t.loadingText}</div>;
@@ -351,10 +460,9 @@ function Home() {
       <section className="hero colombian-hero">
         <div className="colombian-flag-accent"></div>
         <div className="hero-content">
-          <div className="hero-badge">🇨🇴 Especialistas en Cartagena</div>
+          <div className="hero-badge">{t.luxuryBadge}</div>
           <h1 className="hero-title">{t.heroTitle}</h1>
-          <p className="hero-subtitle enhanced-subtitle">{t.heroSubtitle}</p>
-          <p className="hero-tagline">✨ Tu hogar en la Ciudad Amurallada te espera</p>
+          <p className="hero-tagline">✨ {t.heroTagline}</p>
           <div className="hero-stats enhanced-stats">
             <div className="stat premium-stat">
               <strong>500+</strong>
@@ -378,9 +486,14 @@ function Home() {
             </div>
           </div>
           <div className="hero-trust-signals">
-            <span className="trust-signal">✓ Avalúos Certificados</span>
-            <span className="trust-signal">✓ Proceso Legal Garantizado</span>
-            <span className="trust-signal">✓ Financiación Disponible</span>
+            <span className="trust-signal">{t.trustSignals.certified}</span>
+            <span className="trust-signal">{t.trustSignals.legal}</span>
+            <span className="trust-signal">{t.trustSignals.financing}</span>
+          </div>
+          
+          {/* Luxury Search Bar */}
+          <div className="hero-search">
+            <LuxurySearchBar onSearch={handleSearch} />
           </div>
         </div>
       </section>
@@ -428,41 +541,42 @@ function Home() {
                   </div>
                 </div>
                 <div className="property-content">
-                  {/* Scarcity & Social Proof Indicators */}
-                  {property.id <= 2 && (
-                    <div className="urgency-badge">⏰ Solo 2 disponibles</div>
-                  )}
-                  {property.id === 3 && (
-                    <div className="social-proof-badge">✨ 12 personas viendo</div>
-                  )}
-                  
-                  <div className="property-header">
-                    <h3 className="property-title">{property.title}</h3>
-                    {property.id <= 3 && (
-                      <span className="trending-badge">🔥 Popular</span>
+                  <div className="property-content-top">
+                    {/* Scarcity & Social Proof Indicators */}
+                    {property.id <= 2 && (
+                      <div className="urgency-badge">⏰ Solo 2 disponibles</div>
                     )}
-                  </div>
-                  
-                  <div className="location-rating">
-                    <p className="property-location">📍 {property.location}</p>
-                    <div className="property-rating">
-                      <span className="stars">⭐⭐⭐⭐⭐</span>
-                      <span className="rating-count">(4.8)</span>
+                    {property.id === 3 && (
+                      <div className="social-proof-badge">✨ 12 personas viendo</div>
+                    )}
+                    
+                    <div className="property-header">
+                      <h3 className="property-title">{property.title}</h3>
+                      {property.id <= 3 && (
+                        <span className="trending-badge">🔥 Popular</span>
+                      )}
                     </div>
+                    
+                    <div className="location-rating">
+                      <p className="property-location">📍 {property.location}</p>
+                      <div className="property-rating">
+                        <span className="stars">⭐⭐⭐⭐⭐</span>
+                        <span className="rating-count">(4.8)</span>
+                      </div>
+                    </div>
+                    
+                    <div className="property-features">
+                      <span className="feature">🛏️ {property.bedrooms}</span>
+                      <span className="feature">🚿 {property.bathrooms}</span>
+                      <span className="feature">📐 {property.sqft}m²</span>
+                      {property.features.slice(0, 2).map(feature => (
+                        <span key={feature} className="feature premium-feature">✨ {feature}</span>
+                      ))}
+                    </div>
+                    
                   </div>
                   
-                  <div className="property-features">
-                    <span className="feature">🛏️ {property.bedrooms}</span>
-                    <span className="feature">🚿 {property.bathrooms}</span>
-                    <span className="feature">📐 {property.sqft}m²</span>
-                    {property.features.slice(0, 1).map(feature => (
-                      <span key={feature} className="feature premium-feature">✨ {feature}</span>
-                    ))}
-                  </div>
-                  
-                  <p className="property-description">
-                    {property.description.substring(0, 85)}...
-                  </p>
+                  <div className="property-content-bottom">
                   
                   {/* Trust & Value Indicators */}
                   <div className="trust-indicators">
@@ -490,12 +604,16 @@ function Home() {
                       <span className="cta-subtext">Ver ahora</span>
                     </Link>
                   </div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+      
+      {/* WhatsApp Business Float */}
+      <WhatsAppFloat />
     </div>
   );
 }
