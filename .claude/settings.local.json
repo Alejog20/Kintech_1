@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(npm install:*)",
+      "Bash(npm start)",
+      "Bash(npm run build:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(node:*)",
+      "Bash(PORT=3001 npm start)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

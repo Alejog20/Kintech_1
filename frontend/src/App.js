@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google'; // Import Google Provider
 import { LanguageProvider } from './context/LanguageContext';
-import { ThemeProvider } from './context/ThemeContext'; // Importar el proveedor de tema
+import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -9,28 +11,35 @@ import Home from './pages/Home';
 import PropertyDetail from './pages/PropertyDetail';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import LoginCallback from './pages/LoginCallback'; // Import the new callback component
+
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function App() {
   return (
-    // Envolver la aplicación con ambos proveedores.
-    <ThemeProvider>
-      <LanguageProvider>  
-        <Router>
-          <div className="App" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <Header />
-            <main style={{ flex: 1 }}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/property/:id" element={<PropertyDetail />} />
-                <Route path="/contact" element={<Contact />} />
-              </Routes>
-            </main>
-            <Footer /> 
-          </div>
-        </Router>
-      </LanguageProvider>
-    </ThemeProvider>
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+      <ThemeProvider>
+        <LanguageProvider>
+          <AuthProvider>
+            <Router>
+              <div className="App" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+                <Header />
+                <main style={{ flex: 1 }}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/property/:id" element={<PropertyDetail />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/login/callback" element={<LoginCallback />} /> {/* Google OAuth callback */}
+                  </Routes>
+                </main>
+                <Footer />
+              </div>
+            </Router>
+          </AuthProvider>
+        </LanguageProvider>
+      </ThemeProvider>
+    </GoogleOAuthProvider>
   );
 }
 
