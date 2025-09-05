@@ -1,57 +1,57 @@
 /* 🎨 PrimeProp Real Estate Styles - Versión Final */
 
-/* --- Colonial Sunset Luxury Palette (From Design Document) --- */
+/* --- Vibrant Accents Palette (Applied for Light Mode) --- */
 :root {
-  /* Colonial Sunset Primary Colors - Sophistication & Authority */
-  --primary-color: #282828;       /* Sophistication, Authority - Charcoal */
-  --primary-light: #404040;       /* Lighter Charcoal Variant */
-  --primary-dark: #1a1a1a;        /* Darker Charcoal for depth */
-  --secondary-color: #FFFFFF;     /* Purity, Simplicity - Pure White */
-  --secondary-light: #F3E9DC;     /* Warmth, Earthen - Old Stone */
-  --accent-color: #E6A574;        /* Terracotta, Warmth */
-  --accent-light: #F2C09A;        /* Light Terracotta */
-  --accent-coral: #B34B3B;        /* Deep Coral, Passion */
+  /* Vibrant Accents Primary Colors */
+  --primary-color: #F8F8F8;       /* Off-White - General Backgrounds */
+  --primary-light: #F0F0F0;       /* Lighter Off-White */
+  --primary-dark: #E0E0E0;        /* Light Gray */
+  --secondary-color: #333333;     /* Dark Gray - For elements that need to stand out (e.g., header) */
+  --secondary-light: #555555;     /* Medium Dark Gray */
+  --accent-color: #00BFFF;        /* Electric Blue */
+  --accent-light: #66D9EF;        /* Lighter Electric Blue */
+  --accent-coral: #0080FF;        /* Darker Electric Blue (for accent) */
   
-  /* Text Colors - High Contrast for Luxury */
-  --text-primary: #282828;        /* Charcoal for primary text */
-  --text-secondary: #5A5A5A;      /* Medium Gray */
-  --text-muted: #888888;          /* Light Gray */
+  /* Text Colors - High Contrast for Readability */
+  --text-primary: #000000;        /* Black for primary text */
+  --text-secondary: #333333;      /* Dark Gray */
+  --text-muted: #CCCCCC;          /* Light Gray */
   --text-light: #FFFFFF;          /* White text for dark backgrounds */
-  --text-warm: #B34B3B;           /* Warm coral for accents */
+  --text-warm: #0080FF;           /* Darker Electric Blue (for accents) */
   
-  /* Background Colors - Warm & Sophisticated */
-  --bg-primary: #FFFFFF;          /* Pure White */
-  --bg-secondary: #F3E9DC;        /* Warm Old Stone */
-  --bg-tertiary: #FAF6F1;         /* Very Light Warm */
-  --bg-surface: #FFFFFF;          /* Card/Surface Background */
-  --bg-overlay: rgba(40, 40, 40, 0.7); /* Dark overlay for images */
+  /* Background Colors - Clean & Modern */
+  --bg-primary: #F8F8F8;          /* Off-White */
+  --bg-secondary: #F0F0F0;        /* Lighter Off-White */
+  --bg-tertiary: #E0E0E0;         /* Light Gray */
+  --bg-surface: #F8F8F8;          /* Card/Surface Background */
+  --bg-overlay: rgba(0, 0, 0, 0.05); /* 5% dark transparent overlay */
   
-  /* Border Colors - Warm & Refined */
-  --border-color: #E6D5C3;        /* Warm Light Border */
-  --border-light: #F0E6D8;        /* Very Light Warm Border */
-  --border-focus: var(--accent-color); /* Terracotta Focus */
-  --border-coral: var(--accent-coral); /* Coral accent borders */
+  /* Border Colors - Subtle & Defined */
+  --border-color: #D0D0D0;        /* Light Gray Border */
+  --border-light: #E0E0E0;        /* Very Light Gray Border */
+  --border-focus: var(--accent-color); /* Electric Blue Focus */
+  --border-coral: var(--accent-coral); /* Darker Electric Blue borders */
   
-  /* Shadow Colors - Warm Luxury Shadows */
-  --shadow-sm: 0 1px 3px 0 rgba(40, 40, 40, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(40, 40, 40, 0.15);
-  --shadow-lg: 0 10px 15px -3px rgba(40, 40, 40, 0.15);
-  --shadow-xl: 0 20px 25px -5px rgba(40, 40, 40, 0.15);
-  --shadow-luxury: 0 25px 50px -12px rgba(40, 40, 40, 0.25);
+  /* Shadow Colors - Modern & Clean Shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  --shadow-luxury: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   
   /* Status Colors */
-  --success-color: #E6A574;       /* Terracotta */
-  --warning-color: #E6A574;       /* Terracotta */
-  --error-color: #B34B3B;         /* Deep Coral */
+  --success-color: #28A745;       /* Green */
+  --warning-color: #FFC107;       /* Yellow/Orange */
+  --error-color: #DC3545;         /* Red */
   --info-color: var(--primary-color);
   
   /* Font */
   --font-family: 'Inter', 'Playfair Display', serif, -apple-system, BlinkMacSystemFont, sans-serif;
   
-  /* Colonial Sunset Gradients */
+  /* Vibrant Accents Gradients */
   --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
   --gradient-warm: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-coral) 100%);
-  --gradient-overlay: linear-gradient(135deg, rgba(40, 40, 40, 0.8) 0%, rgba(230, 165, 116, 0.3) 100%);
+  --gradient-overlay: linear-gradient(135deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.05) 100%); /* 5% dark transparent overlay */
 }
 
 /* --- Dark Mode Colonial Sunset Palette --- */
@@ -186,14 +186,28 @@ body {
 
 /* 🧭 Luxury Navigation Header */
 .header {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: var(--text-light);
+  background: linear-gradient(135deg, #0A2342 0%, #003366 100%);
+  color: #FFFFFF;
   padding: 1.5rem 0;
   box-shadow: var(--shadow-luxury);
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Light mode navbar - Caribbean Modern palette for trust and professionalism */
+body:not(.dark-mode) .header {
+  background: linear-gradient(135deg, #0A2342 0%, #003366 100%);
+  color: #FFFFFF;
+  border-bottom: 1px solid rgba(0, 191, 150, 0.2);
+}
+
+/* Dark mode navbar maintains current styling */
+body.dark-mode .header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: var(--text-light);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -234,6 +248,24 @@ body {
   opacity: 0.8;
 }
 
+/* Ensure nav links are properly colored for both themes */
+body:not(.dark-mode) .nav-link {
+  color: #FFFFFF;
+}
+
+body:not(.dark-mode) .nav-link:hover {
+  color: #00A896;
+  opacity: 1;
+}
+
+body.dark-mode .nav-link {
+  color: var(--text-light);
+}
+
+body.dark-mode .nav-link:hover {
+  opacity: 0.8;
+}
+
 .cta-button {
   background: rgba(255, 255, 255, 0.15);
   border: 2px solid var(--accent-color);
@@ -252,6 +284,20 @@ body {
   color: var(--text-light);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+}
+
+/* Light mode CTA button styling - Caribbean Modern palette */
+body:not(.dark-mode) .cta-button {
+  background: rgba(0, 191, 150, 0.1);
+  border: 2px solid #00A896;
+  color: #FFFFFF;
+}
+
+body:not(.dark-mode) .cta-button:hover {
+  background: #00A896;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 168, 150, 0.3);
 }
 
 /* Auth button styles */
@@ -486,7 +532,7 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--border-color);
   position: relative;
-  min-height: 700px; /* Increased min-height to accommodate all content properly */
+  min-height: 490px; /* Reduced by 30% from 700px for better screen utilization */
   height: auto; /* Allow cards to grow as needed */
   display: flex;
   flex-direction: column;
@@ -518,7 +564,7 @@ body {
 
 .property-image {
   position: relative;
-  height: 280px; /* Increased height for better proportion */
+  height: 200px; /* Reduced proportionally for better card balance */
   overflow: hidden;
   background: linear-gradient(45deg, var(--bg-secondary), var(--bg-tertiary));
   flex-shrink: 0; /* Prevent shrinking */
@@ -600,13 +646,14 @@ body {
 }
 
 .property-content {
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   background: var(--bg-surface);
   flex-grow: 1; /* Fill remaining space */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 380px; /* Ensure consistent content height */
+  min-height: 260px; /* Reduced proportionally - was 380px */
+  gap: 1rem; /* Add consistent spacing between elements */
 }
 
 .property-content-top {
@@ -650,11 +697,11 @@ body {
 
 .property-features {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
-  min-height: 2.5rem; /* Consistent features height */
   align-items: center;
+  justify-content: flex-start;
 }
 
 .feature {
@@ -795,10 +842,18 @@ body.dark-mode .view-details-btn:hover {
 /* Neuromarketing Enhancement Styles */
 .property-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.property-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
 }
 
 .trending-badge {
@@ -844,9 +899,15 @@ body.dark-mode .view-details-btn:hover {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid var(--border-light);
+}
+
+.agent-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .agent-info {
@@ -1192,7 +1253,7 @@ body.dark-mode .instant-badge {
   position: relative;
   background: 
     var(--gradient-overlay),
-    url('./bg3.jpg') center/cover no-repeat fixed;
+    url('./bg7.jpg') center/cover no-repeat fixed;
   background-attachment: fixed;
   overflow: hidden;
   min-height: 100vh;
@@ -2327,7 +2388,7 @@ body.dark-mode .instant-badge {
   }
   
   .property-content {
-    min-height: 350px; /* Consistent content height on mobile */
+    min-height: 240px; /* Reduced proportionally for mobile */
   }
   
   .contact-content {

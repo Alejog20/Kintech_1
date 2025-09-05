@@ -316,7 +316,7 @@ function Home() {
       setLoading(true);
       try {
         // Fetch from real API
-        const response = await fetch('http://localhost:5001/api/properties');
+        const response = await fetch('http://localhost:5000/api/properties');
         const data = await response.json();
         
         if (data.success) {
@@ -392,11 +392,11 @@ function Home() {
     setLoading(true);
     
     try {
-      let url = 'http://localhost:5001/api/properties';
+      let url = 'http://localhost:5000/api/properties';
       const params = new URLSearchParams();
       
       if (searchData.query && searchData.query.trim()) {
-        url = 'http://localhost:5001/api/properties/search';
+        url = 'http://localhost:5000/api/properties/search';
         params.append('q', searchData.query.trim());
       }
       
@@ -541,69 +541,26 @@ function Home() {
                   </div>
                 </div>
                 <div className="property-content">
-                  <div className="property-content-top">
-                    {/* Scarcity & Social Proof Indicators */}
-                    {property.id <= 2 && (
-                      <div className="urgency-badge">⏰ Solo 2 disponibles</div>
-                    )}
-                    {property.id === 3 && (
-                      <div className="social-proof-badge">✨ 12 personas viendo</div>
-                    )}
-                    
-                    <div className="property-header">
-                      <h3 className="property-title">{property.title}</h3>
-                      {property.id <= 3 && (
-                        <span className="trending-badge">🔥 Popular</span>
-                      )}
-                    </div>
-                    
-                    <div className="location-rating">
-                      <p className="property-location">📍 {property.location}</p>
-                      <div className="property-rating">
-                        <span className="stars">⭐⭐⭐⭐⭐</span>
-                        <span className="rating-count">(4.8)</span>
-                      </div>
-                    </div>
-                    
-                    <div className="property-features">
-                      <span className="feature">🛏️ {property.bedrooms}</span>
-                      <span className="feature">🚿 {property.bathrooms}</span>
-                      <span className="feature">📐 {property.sqft}m²</span>
-                      {property.features.slice(0, 2).map(feature => (
-                        <span key={feature} className="feature premium-feature">✨ {feature}</span>
-                      ))}
-                    </div>
-                    
+                  <div className="property-header">
+                    <h3 className="property-title">{property.title}</h3>
                   </div>
                   
-                  <div className="property-content-bottom">
+                  <p className="property-location">📍 {property.location}</p>
                   
-                  {/* Trust & Value Indicators */}
-                  <div className="trust-indicators">
-                    <span className="verified-badge">✓ Verificado</span>
-                    {property.type === 'sale' && property.price < 1500000000 && (
-                      <span className="value-badge">💰 Gran Valor</span>
-                    )}
-                    {property.type === 'rental' && (
-                      <span className="instant-badge">⚡ Respuesta Rápida</span>
-                    )}
+                  <div className="property-features">
+                    <span className="feature">🛏️ {property.bedrooms}</span>
+                    <span className="feature">🚿 {property.bathrooms}</span>
+                    <span className="feature">📐 {property.sqft}m²</span>
                   </div>
                   
                   <div className="property-footer">
-                    <div className="agent-section">
-                      <span className="agent-info">
-                        <span className="agent-name">{property.agent}</span>
-                      </span>
-                      <span className="agent-credentials">Agente Certificado</span>
-                    </div>
+                    <span className="agent-name">{property.agent}</span>
                     <Link 
                       to={`/property/${property.id}`} 
                       className="view-details-btn premium-cta"
                     >
-                      <span>{t.viewDetails}</span>
-                      <span className="cta-subtext">Ver ahora</span>
+                      {t.viewDetails}
                     </Link>
-                  </div>
                   </div>
                 </div>
               </div>
