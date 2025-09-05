@@ -11,8 +11,6 @@ import Home from './pages/Home';
 import PropertyDetail from './pages/PropertyDetail';
 import Contact from './pages/Contact';
 import About from './pages/About';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 import LoginCallback from './pages/LoginCallback'; // Import the new callback component
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -32,9 +30,7 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/property/:id" element={<PropertyDetail />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/login/callback" element={<LoginCallback />} /> {/* Add Callback Route */}
+                    <Route path="/login/callback" element={<LoginCallback />} /> {/* Google OAuth callback */}
                   </Routes>
                 </main>
                 <Footer />

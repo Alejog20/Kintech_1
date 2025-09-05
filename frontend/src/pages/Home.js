@@ -347,24 +347,40 @@ function Home() {
     <div className="home">
       {/* 5. Eliminar el botón de idioma de aquí */}
 
-      {/* Hero Section */}
-      <section className="hero">
+      {/* Enhanced Colombian Hero Section */}
+      <section className="hero colombian-hero">
+        <div className="colombian-flag-accent"></div>
         <div className="hero-content">
+          <div className="hero-badge">🇨🇴 Especialistas en Cartagena</div>
           <h1 className="hero-title">{t.heroTitle}</h1>
-          <p className="hero-subtitle">{t.heroSubtitle}</p>
-          <div className="hero-stats">
-            <div className="stat">
+          <p className="hero-subtitle enhanced-subtitle">{t.heroSubtitle}</p>
+          <p className="hero-tagline">✨ Tu hogar en la Ciudad Amurallada te espera</p>
+          <div className="hero-stats enhanced-stats">
+            <div className="stat premium-stat">
               <strong>500+</strong>
-              <span>Propiedades</span>
+              <span>Propiedades Premium</span>
+              <div className="stat-icon">🏘️</div>
             </div>
-            <div className="stat">
+            <div className="stat premium-stat">
               <strong>98%</strong>
-              <span>Satisfacción</span>
+              <span>Clientes Satisfechos</span>
+              <div className="stat-icon">⭐</div>
             </div>
-            <div className="stat">
+            <div className="stat premium-stat">
               <strong>15+</strong>
-              <span>Años de experiencia</span>
+              <span>Años de Experiencia</span>
+              <div className="stat-icon">🏆</div>
             </div>
+            <div className="stat premium-stat">
+              <strong>24/7</strong>
+              <span>Atención Personalizada</span>
+              <div className="stat-icon">💎</div>
+            </div>
+          </div>
+          <div className="hero-trust-signals">
+            <span className="trust-signal">✓ Avalúos Certificados</span>
+            <span className="trust-signal">✓ Proceso Legal Garantizado</span>
+            <span className="trust-signal">✓ Financiación Disponible</span>
           </div>
         </div>
       </section>
@@ -412,22 +428,68 @@ function Home() {
                   </div>
                 </div>
                 <div className="property-content">
-                  <h3 className="property-title">{property.title}</h3>
-                  <p className="property-location">📍 {property.location}</p>
-                  <div className="property-features">
-                    <span className="feature">🛏️ {property.bedrooms} bed</span>
-                    <span className="feature">🚿 {property.bathrooms} bath</span>
-                    <span className="feature">📐 {property.sqft} sqft</span>
+                  {/* Scarcity & Social Proof Indicators */}
+                  {property.id <= 2 && (
+                    <div className="urgency-badge">⏰ Solo 2 disponibles</div>
+                  )}
+                  {property.id === 3 && (
+                    <div className="social-proof-badge">✨ 12 personas viendo</div>
+                  )}
+                  
+                  <div className="property-header">
+                    <h3 className="property-title">{property.title}</h3>
+                    {property.id <= 3 && (
+                      <span className="trending-badge">🔥 Popular</span>
+                    )}
                   </div>
+                  
+                  <div className="location-rating">
+                    <p className="property-location">📍 {property.location}</p>
+                    <div className="property-rating">
+                      <span className="stars">⭐⭐⭐⭐⭐</span>
+                      <span className="rating-count">(4.8)</span>
+                    </div>
+                  </div>
+                  
+                  <div className="property-features">
+                    <span className="feature">🛏️ {property.bedrooms}</span>
+                    <span className="feature">🚿 {property.bathrooms}</span>
+                    <span className="feature">📐 {property.sqft}m²</span>
+                    {property.features.slice(0, 1).map(feature => (
+                      <span key={feature} className="feature premium-feature">✨ {feature}</span>
+                    ))}
+                  </div>
+                  
                   <p className="property-description">
-                    {property.description.substring(0, 100)}...
+                    {property.description.substring(0, 85)}...
                   </p>
-                  <Link 
-                    to={`/property/${property.id}`} 
-                    className="view-details-btn"
-                  >
-                    {t.viewDetails}
-                  </Link>
+                  
+                  {/* Trust & Value Indicators */}
+                  <div className="trust-indicators">
+                    <span className="verified-badge">✓ Verificado</span>
+                    {property.type === 'sale' && property.price < 1500000000 && (
+                      <span className="value-badge">💰 Gran Valor</span>
+                    )}
+                    {property.type === 'rental' && (
+                      <span className="instant-badge">⚡ Respuesta Rápida</span>
+                    )}
+                  </div>
+                  
+                  <div className="property-footer">
+                    <div className="agent-section">
+                      <span className="agent-info">
+                        <span className="agent-name">{property.agent}</span>
+                      </span>
+                      <span className="agent-credentials">Agente Certificado</span>
+                    </div>
+                    <Link 
+                      to={`/property/${property.id}`} 
+                      className="view-details-btn premium-cta"
+                    >
+                      <span>{t.viewDetails}</span>
+                      <span className="cta-subtext">Ver ahora</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}

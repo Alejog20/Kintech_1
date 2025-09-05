@@ -126,11 +126,11 @@ def google_authorize():
         
         # Redirect back to the frontend with the token
         # In a real app, you might use a more secure method than query params
-        return redirect(f'http://localhost:3000/login/callback?token={access_token}')
+        return redirect(f'http://localhost:3001/login/callback?token={access_token}')
 
     except Exception as e:
         print(f"Error during Google OAuth callback: {e}")
-        return redirect('http://localhost:3000/login?error=oauth_failed')
+        return redirect('http://localhost:3001/login?error=oauth_failed')
 
 
 # --- Property Endpoints ---
