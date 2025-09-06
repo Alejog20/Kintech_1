@@ -1,0 +1,116 @@
+/* 🗓️ Clean Colombian Flag Gradient Border Search Bar */
+.search-bar-transparent {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 78px;
+  padding: 1.3rem;
+  position: relative;
+  transition: all 0.3s ease;
+  transform: scale(1.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 0 0 8px #FFD700;
+  animation: snake-colors 3s linear infinite;
+}
+
+@keyframes snake-colors {
+  0% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 8px #FFD700; }
+  33% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 8px #0039C7; }
+  66% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 8px #DC2626; }
+  100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 8px #FFD700; }
+}
+
+.search-bar-transparent:hover {
+  transform: translateY(-2px) scale(1.12);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* Clean Internal Elements */
+.search-sections {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-height: 70px;
+}
+
+.section-icon {
+  font-size: 1.8rem;
+  opacity: 0.8;
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.section-content label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.2rem;
+}
+
+.transparent-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  color: white;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.transparent-input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.transparent-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.calendar-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.elegant-search-btn {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.elegant-search-btn:hover {
+  transform: scale(1.05);
+}
+
+.elegant-search-btn svg {
+  width: 24px;
+  height: 24px;
+  color: #333;
+}
+
