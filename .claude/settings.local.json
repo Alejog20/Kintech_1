@@ -7,7 +7,10 @@
       "Bash(npm run build:*)",
       "Bash(npm uninstall:*)",
       "Bash(node:*)",
-      "Bash(PORT=3001 npm start)"
+      "Bash(PORT=3001 npm start)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Read(//c/Users/agarcia12345678/AppData/Local/Packages/MicrosoftWindows.Client.Core_cw5n1h2txyewy/TempState/ScreenClip/**)"
     ],
     "deny": [],
     "ask": []

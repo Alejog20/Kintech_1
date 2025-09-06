@@ -13,6 +13,11 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import LoginCallback from './pages/LoginCallback'; // Import the new callback component
 
+import AdminLayout from './components/AdminLayout'; // Import AdminLayout
+import AdminDashboard from './pages/AdminDashboard'; // Import AdminDashboard
+import AdminPropertyList from './components/AdminPropertyList'; // Import AdminPropertyList
+import PropertyForm from './components/PropertyForm'; // Import PropertyForm
+
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function App() {
@@ -31,6 +36,15 @@ function App() {
                     <Route path="/property/:id" element={<PropertyDetail />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/login/callback" element={<LoginCallback />} /> {/* Google OAuth callback */}
+
+                    {/* Admin Routes */}
+                    <Route path="/admin" element={<AdminLayout />}>
+                      <Route index element={<AdminDashboard />} /> {/* Default admin route */}
+                      <Route path="dashboard" element={<AdminDashboard />} />
+                      <Route path="properties" element={<AdminPropertyList />} />
+                      <Route path="properties/new" element={<PropertyForm />} />
+                      <Route path="properties/edit/:id" element={<PropertyForm />} />
+                    </Route>
                   </Routes>
                 </main>
                 <Footer />

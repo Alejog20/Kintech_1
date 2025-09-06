@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { jwtDecode } from 'jwt-decode'; // Import jwtDecode as a named export
 
 // 1. Create the context
 const AuthContext = createContext();
@@ -14,35 +15,31 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      if (token) {
-        try {
-          const response = await fetch('http://localhost:5000/api/auth/me', {
-            headers: {
-              'Authorization': `Bearer ${token}`
-            }
-          });
-          if (response.ok) {
-            const data = await response.json();
-            setUser(data.logged_in_as);
-          } else {
-            // Token is invalid or expired
-            logout();
-          }
-        } catch (error) {
-          console.error("Failed to fetch user", error);
-          logout();
-        }
+  // Function to decode token and set user
+  const decodeAndSetUser = (token) => {
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        setUser(decoded); // decoded will now contain id, name, email, and role
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        logout(); // Invalid token, log out
       }
-      setLoading(false);
-    };
-    fetchUser();
-  }, [token]);
+    } else {
+      setUser(null);
+    }
+  };
+
+  useEffect(() => {
+    // On initial load or token change, decode and set user
+    decodeAndSetUser(token);
+    setLoading(false); // Set loading to false after initial check
+  }, [token]); // Depend on token
 
   const login = (newToken) => {
     localStorage.setItem('token', newToken);
     setToken(newToken);
+    decodeAndSetUser(newToken); // Decode and set user immediately on login
   };
 
   const logout = () => {
@@ -50,6 +47,10 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     setUser(null);
   };
+
+  const isAdmin = user && user.role === 'admin'; // New helper for admin check
+  console.log('AuthContext User:', user); // Add this line for debugging
+  console.log('AuthContext isAdmin:', isAdmin); // Add this line for debugging
   
   const value = {
     token,
@@ -57,7 +58,8 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     isAuthenticated: !!token,
-    loading
+    loading,
+    isAdmin // Expose isAdmin
   };
 
   return (
