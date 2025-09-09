@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './LuxurySearchBar.css';
 import { LanguageContext } from '../context/LanguageContext';
 
 const LuxurySearchBar = ({ onSearch, className = '' }) => {

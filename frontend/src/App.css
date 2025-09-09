@@ -138,9 +138,50 @@ body {
 
 .search-bar {
   background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 12px var(--shadow-color);
-  /* ... */
+  border: 1px solid var(--border-color); /* This will be visually replaced by the pseudo-element border */
+  box-shadow: var(--shadow-md); /* Initial shadow */
+  border-radius: 12px; /* Assuming a border-radius for the search bar */
+  position: relative; /* Needed for pseudo-element positioning */
+  overflow: hidden; /* Ensures gradient stays within bounds */
+  transition: box-shadow 0.4s ease-in-out; /* Smooth transition for shadow */
+}
+
+/* New pseudo-element for animated gradient border */
+.search-bar::before {
+  content: '';
+  position: absolute;
+  top: -2px; /* Slightly outside the border */
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    #FFD700, /* Yellow */
+    #00BFFF, /* Blue */
+    #DC3545, /* Red */
+    #FFD700  /* Repeat yellow to ensure smooth loop */
+  );
+  background-size: 400% 400%; /* Make gradient larger than element */
+  border-radius: 14px; /* Slightly larger than search bar for border effect */
+  z-index: -1; /* Behind the content */
+  animation: gradient-snake 8s linear infinite; /* Animation for movement */
+  opacity: 0.8; /* Subtle transparency */
+}
+
+/* Keyframes for the gradient animation */
+@keyframes gradient-snake {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Enhanced shadow and lighting on hover/active (or always, depending on desired effect) */
+.search-bar:hover,
+.search-bar.active { /* Assuming 'active' class is applied when search bar is focused */
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.6),   /* Yellow glow */
+    0 0 30px rgba(0, 191, 255, 0.4),   /* Blue glow */
+    0 0 45px rgba(220, 53, 69, 0.3),   /* Red glow */
+    var(--shadow-lg); /* Existing larger shadow */
 }
 
 /* --- Estilos para el botón de cambio de tema --- */
@@ -356,10 +397,10 @@ body:not(.dark-mode) .cta-button:hover {
 }
 
 .hero-content {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 2rem;
-  width: 100%;
+  width: 120%;
 }
 
 .hero-title {
@@ -368,7 +409,7 @@ body:not(.dark-mode) .cta-button:hover {
   margin-bottom: 2rem;
   line-height: 1.1;
   text-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  max-width: 1100px;
+  max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
   letter-spacing: -0.02em; /* Tighter letter spacing for impact */
@@ -549,8 +590,7 @@ body:not(.dark-mode) .cta-button:hover {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--border-color);
   position: relative;
-  min-height: 380px; /* More compact for professional appearance */
-  height: auto; /* Allow cards to grow as needed */
+  height: 450px; /* Fixed height for consistent cards */
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(10px);
@@ -579,6 +619,7 @@ body:not(.dark-mode) .cta-button:hover {
   opacity: 1;
 }
 
+.property-image-container,
 .property-image {
   position: relative;
   height: 180px; /* Compact image height for professional cards */
@@ -611,23 +652,104 @@ body:not(.dark-mode) .cta-button:hover {
   filter: brightness(1.1) contrast(1.15);
 }
 
-.property-price {
+.property-price,
+.price-badge {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background: linear-gradient(135deg, #0A2342, #003366);
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-coral));
   color: #FFFFFF;
-  padding: 8px 14px;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-weight: 700;
   font-size: 0.85rem;
-  box-shadow: 0 4px 12px rgba(10, 35, 66, 0.4);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 4;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
+  max-width: 160px;
+  text-align: center;
+  line-height: 1.2;
   letter-spacing: 0.5px;
   white-space: nowrap;
+}
+
+.property-card:hover .price-badge,
+.property-card:hover .property-price {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Dark mode price badge */
+body.dark-mode .price-badge,
+body.dark-mode .property-price {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Favorite button */
+.favorite-btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  z-index: 3;
+  backdrop-filter: blur(10px);
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 1);
+}
+
+.favorite-btn.liked {
+  background: rgba(255, 82, 82, 0.1);
+  border: 2px solid #ff5252;
+}
+
+/* Status badge */
+.status-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.status-badge.rental {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+}
+
+.status-badge.sale {
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  color: white;
+}
+
+/* Dark mode adjustments for buttons */
+body.dark-mode .favorite-btn {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+body.dark-mode .favorite-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
 }
 
 @keyframes pulse-price {
@@ -1105,7 +1227,6 @@ body.dark-mode .view-details-btn:hover {
   gap: 0.8rem;
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
 }
 
 .amenities-section {
@@ -1275,7 +1396,7 @@ body.dark-mode .urgent-cta {
 }
 
 body.dark-mode .property-footer {
-  border-top-color: var(--border-color);
+  /* No border styling needed */
 }
 
 body.dark-mode .agent-info::before {
@@ -1602,6 +1723,14 @@ body.dark-mode .instant-badge {
   }
 }
 
+.property-main-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem; /* Add some space below the price */
+}
+
 /* Colonial Sunset Hero Section with Custom Background */
 .colombian-hero {
   position: relative;
@@ -1617,16 +1746,7 @@ body.dark-mode .instant-badge {
   backdrop-filter: blur(1px);
 }
 
-.colombian-flag-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, #FFD700 0%, #FFD700 33.33%, #0033A0 33.33%, #0033A0 66.66%, #CE1126 66.66%);
-  z-index: 10;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
+
 
 .hero-badge {
   display: inline-block;
@@ -1655,13 +1775,14 @@ body.dark-mode .instant-badge {
 }
 
 .hero-tagline {
-  font-size: 2.2rem; /* 100% bigger - was 1.1rem */
+  font-size: 1.8rem; /* 100% bigger - was 1.1rem */
   color: rgba(255, 255, 255, 0.95);
   margin-bottom: 3rem;
-  font-style: normal;
+  border-radius: 80%;
+  font-style: initial;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  font-weight: 400;
-  max-width: 800px;
+  font-weight: 800;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.3;
@@ -1675,13 +1796,13 @@ body.dark-mode .instant-badge {
 
 .premium-stat {
   background: rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(5px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   color: rgba(255, 255, 255, 0.95) !important;
   border-radius: 20px !important;
   padding: 2rem 1.5rem !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border: 0px solid rgba(255, 255, 255, 0.2) !important;
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3531,41 +3652,29 @@ body.dark-mode {
 .search-bar-transparent {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(20px);
-  border: 3px solid transparent;
+  border: 3px solid rgba(255, 255, 255, 0.2); /* Subtle, almost transparent white border */
   border-radius: 60px;
   padding: 1rem;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
-  
-  /* 🇨🇴 Colombian Flag Border for Main Search */
-  background-image: 
-    rgba(255, 255, 255, 0.15),
-    linear-gradient(90deg, 
-      #FFD700 0%,     /* Colombian Yellow */
-      #FFD700 50%,    /* Colombian Yellow */
-      #0033A0 50%,    /* Colombian Blue */
-      #0033A0 75%,    /* Colombian Blue */
-      #CE1126 75%,    /* Colombian Red */
-      #CE1126 100%    /* Colombian Red */
-    );
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  
-  box-shadow: 
-    0 0 20px rgba(255, 215, 0, 0.4),     /* Golden glow */
-    0 0 40px rgba(0, 51, 160, 0.3),      /* Blue glow */
-    0 0 60px rgba(206, 17, 38, 0.2),     /* Red glow */
-    0 8px 32px rgba(0, 0, 0, 0.1);       /* Depth shadow */
+  transition: all 0.3s ease; /* Keep existing transition */
+
+  /* Initial subtle shadow, will be animated */
+  box-shadow: 0 0 0 0 rgba(0,0,0,0); /* Start with no shadow */
+  animation: glowing-border-animation 6s infinite alternate ease-in-out; /* Apply the new animation */
+
+  /* Remove previous background-image related to gradient border */
+  background-image: none;
+  background-origin: initial;
+  background-clip: initial;
 }
 
 .search-bar-transparent:hover {
   transform: translateY(-3px) scale(1.01);
-  
-  /* Enhanced Colombian flag border on hover */
-  background-image: 
+  /* Keep existing hover background-image as it's a Colombian flag gradient */
+  background-image:
     rgba(255, 255, 255, 0.25),
-    linear-gradient(90deg, 
+    linear-gradient(90deg,
       #FFD700 0%,     /* Brighter Colombian Yellow */
       #FFED4A 50%,    /* Enhanced Yellow */
       #0039C7 50%,    /* Brighter Colombian Blue */
@@ -3573,13 +3682,7 @@ body.dark-mode {
       #DC2626 75%,    /* Brighter Colombian Red */
       #EF4444 100%    /* Enhanced Red */
     );
-  
-  /* 🇨🇴 Enhanced Colombian Lightning on Hover */
-  box-shadow: 
-    0 0 35px rgba(255, 215, 0, 0.6),     /* Intense golden glow */
-    0 0 55px rgba(0, 51, 160, 0.5),      /* Powerful blue glow */
-    0 0 75px rgba(206, 17, 38, 0.4),     /* Fierce red glow */
-    0 12px 40px rgba(0, 0, 0, 0.15);     /* Enhanced depth */
+  /* The animation will handle the glowing shadow on hover as well */
 }
 
 .search-sections {

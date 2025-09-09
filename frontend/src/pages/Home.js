@@ -788,32 +788,6 @@ function Home() {
     }
   };
 
-  const formatPrice = (property) => {
-    const currency = translations[language].currency;
-    
-    try {
-      if (property.type === 'rental') {
-        const priceValue = property.pricePerNight || 0;
-        if (language === 'es') {
-          return `$${priceValue.toLocaleString('es-CO')} /noche`;
-        } else {
-          return `$${priceValue.toLocaleString('en-US')} /night`;
-        }
-      } else {
-        const priceValue = property.price || 0;
-        if (language === 'es') {
-          return `$${priceValue.toLocaleString('es-CO')}`;
-        } else {
-          return `$${priceValue.toLocaleString('en-US')}`;
-        }
-      }
-    } catch (error) {
-      // Fallback for any formatting errors
-      const price = property.type === 'rental' ? property.pricePerNight : property.price;
-      return property.type === 'rental' ? `$${price}/noche` : `$${price}`;
-    }
-  };
-
   const handleSearch = async (searchData) => {
     console.log('Search performed:', searchData);
     setLoading(true);
@@ -876,6 +850,43 @@ function Home() {
   };
 
   const t = translations[language];
+
+  // USD to COP conversion rate
+  const USD_TO_COP_RATE = 4000;
+
+  // Price formatting function
+  const formatPrice = (price, currency, locale) => {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(price);
+  };
+
+  // Get price display for each property
+  const getPriceDisplay = (property) => {
+    let price;
+    if (property.type === 'rental') {
+      price = property.pricePerNight || property.price_per_night || 450000;
+    } else {
+      price = property.price || 1200000000;
+    }
+
+    let display = '';
+    if (language === 'es') {
+      display = formatPrice(price, 'COP', 'es-CO');
+    } else {
+      const priceUSD = price / USD_TO_COP_RATE;
+      display = formatPrice(priceUSD, 'USD', 'en-US');
+    }
+
+    if (property.type === 'rental') {
+      return language === 'es' ? `${display}/noche` : `${display}/night`;
+    } else {
+      return display;
+    }
+  };
 
   if (loading) return <div className="loading">{t.loadingText}</div>;
 
@@ -962,9 +973,11 @@ function Home() {
                 <div className="property-card">
                   <div className="property-image">
                     <img src={property.image} alt={property.title} />
-                    <div className="property-price">{formatPrice(property)}</div>
                     <div className={`property-type-badge ${property.type}`}>
                       {property.type === 'rental' ? t.forRent : t.forSale}
+                    </div>
+                    <div className="price-badge">
+                      {getPriceDisplay(property)}
                     </div>
                   </div>
                 <div className="property-content">
@@ -1011,25 +1024,6 @@ function Home() {
                           {feature}
                         </span>
                       ))}
-                    </div>
-                    
-                    <div className="engagement-section">
-                      {property.id <= 5 && (
-                        <div className="engagement-stats">
-                          {property.id === 1 && <span className="viewers-count">👁️ {Math.floor(Math.random() * 15) + 8} viendo</span>}
-                          {property.id === 2 && <span className="hot-property">🔥 Muy popular</span>}
-                          {property.id === 3 && <span className="trending-now">📈 En tendencia</span>}
-                          {property.id === 4 && <span className="limited-time">⏰ Oportunidad única</span>}
-                          {property.id === 5 && <span className="recently-updated">✨ Recién actualizada</span>}
-                        </div>
-                      )}
-                      
-                      {property.type === 'rental' && (
-                        <span className="availability-status">✅ Disponible</span>
-                      )}
-                      {property.type === 'sale' && property.price < 1500000000 && (
-                        <span className="value-tag">💎 Excelente valor</span>
-                      )}
                     </div>
                   </div>
                 </div>
