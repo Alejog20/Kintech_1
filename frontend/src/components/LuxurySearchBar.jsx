@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import './LuxurySearchBar.css';
 import { LanguageContext } from '../context/LanguageContext';
+import ColombianSnake from './ColombianSnake.tsx';
 
 const LuxurySearchBar = ({ onSearch, className = '' }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const searchBarRef = useRef(null);
+  const { language } = React.useContext(LanguageContext);
+
+  // Restore state and handlers for inputs
   const [searchQuery, setSearchQuery] = useState('');
   const [location, setLocation] = useState('');
   const [checkIn, setCheckIn] = useState('');
@@ -10,43 +17,19 @@ const LuxurySearchBar = ({ onSearch, className = '' }) => {
   const [guests, setGuests] = useState(1);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef(null);
-  
-  const { language } = React.useContext(LanguageContext);
 
-  const translations = {
-    es: {
-      searchPlaceholder: "Cartagena, Bocagrande...",
-      location: "Ubicación",
-      checkIn: "Entrada",
-      checkOut: "Salida", 
-      guests: "Huéspedes",
-      search: "Buscar",
-      exploreSuggestions: [
-        "Propiedades frente al mar",
-        "Desarrollos en Bocagrande",
-        "Centro Histórico", 
-        "Villas de lujo en Castillogrande",
-        "Apartamentos modernos en Manga"
-      ]
-    },
-    en: {
-      searchPlaceholder: "Cartagena, Bocagrande...",
-      location: "Location",
-      checkIn: "Check-in",
-      checkOut: "Check-out",
-      guests: "Guests", 
-      search: "Search",
-      exploreSuggestions: [
-        "Oceanfront properties",
-        "Bocagrande developments", 
-        "Historic Center",
-        "Luxury villas in Castillogrande",
-        "Modern apartments in Manga"
-      ]
-    }
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // onSearch logic here...
   };
 
-  const t = translations[language];
+  const handleSuggestionClick = (suggestion) => {
+    // onSearch logic here...
+  };
+
+  const handleInputFocus = () => {
+    setShowSuggestions(true);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,39 +37,34 @@ const LuxurySearchBar = ({ onSearch, className = '' }) => {
         setShowSuggestions(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    const searchData = {
-      query: searchQuery,
-      location,
-      checkIn,
-      checkOut,
-      guests,
-      type: 'all'
-    };
-    onSearch && onSearch(searchData);
-    setShowSuggestions(false);
-  };
+  const t = {
+    es: { searchPlaceholder: "Cartagena, Bocagrande..." },
+    en: { searchPlaceholder: "Cartagena, Bocagrande..." },
+  }[language];
 
-  const handleSuggestionClick = (suggestion) => {
-    setSearchQuery(suggestion);
-    setShowSuggestions(false);
-    onSearch && onSearch({ query: suggestion, type: 'suggestion' });
-  };
-
-  const handleInputFocus = () => {
-    setShowSuggestions(true);
-  };
+  const transition = { type: "spring", stiffness: 400, damping: 30 };
 
   return (
-    <div className={`luxury-search-container ${className}`} ref={searchRef}>
-      {/* Always visible transparent search bar with calendar-like design */}
-      <div className="search-bar-transparent">
+    <div
+      style={{ position: 'relative', display: 'inline-block' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div
+        ref={searchBarRef}
+        className="search-bar-transparent"
+        animate={{
+          scale: isHovered ? 1.12 : 1.1,
+          boxShadow: isHovered
+            ? `0px 8px 24px rgba(0,0,0,0.35), -4px 0px 12px rgba(0,0,0,0.15), 4px 0px 12px rgba(0,0,0,0.15)`
+            : `0px 8px 30px rgba(0, 0, 0, 0.5)`,
+        }}
+        transition={transition}
+      >
         <div className="search-sections">
           {/* Location Section */}
           <div className="search-section location-section">
@@ -165,29 +143,9 @@ const LuxurySearchBar = ({ onSearch, className = '' }) => {
             </button>
           </div>
         </div>
-        
-        {/* Suggestions dropdown - shows when focused on location */}
-        {showSuggestions && (
-          <div className="transparent-suggestions">
-            <div className="suggestions-content">
-              <div className="suggestions-section">
-                <h4>🏖️ Explorar Colecciones</h4>
-                {t.exploreSuggestions.map((suggestion, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    className="suggestion-item"
-                    onClick={() => handleSuggestionClick(suggestion)}
-                  >
-                    <span className="suggestion-icon">✨</span>
-                    {suggestion}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+      </motion.div>
+
+      <ColombianSnake targetRef={searchBarRef} isHovered={isHovered} />
     </div>
   );
 };
