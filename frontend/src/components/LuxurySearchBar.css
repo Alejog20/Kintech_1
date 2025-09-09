@@ -1,118 +1,31 @@
-/* 🗓️ Professional Colombian Flag Border Search Bar */
+/* 🇨🇴 Colombian Snake Border - Clean Base Styling for SVG Overlay */
 .search-bar-transparent {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   border: none;
-  border-radius: 78px;
+  border-radius: 999px;
   padding: 1.3rem;
   position: relative;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(1.1);
+  /* transform and transition are now controlled by JavaScript */
+  /* Updated, stronger shadow */
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    0 4px 16px rgba(0, 0, 0, 0.08),
-    0 0 0 4px rgba(255, 215, 0, 0.3),
-    0 0 8px rgba(255, 215, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  animation: snake-crawl 8s ease-in-out infinite;
+    0px 8px 24px rgba(0, 0, 0, 0.35), /* bottom */
+    -4px 0px 12px rgba(0, 0, 0, 0.15), /* left */
+    4px 0px 12px rgba(0, 0, 0, 0.15); /* right */
 }
 
-@keyframes snake-crawl {
-  0% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(255, 215, 0, 0.3),
-      0 0 8px rgba(255, 215, 0, 0.15),
-      0 0 16px rgba(255, 215, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  12% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(255, 237, 74, 0.3),
-      0 0 8px rgba(255, 237, 74, 0.15),
-      0 0 16px rgba(255, 237, 74, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  25% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(255, 255, 0, 0.3),
-      0 0 8px rgba(255, 255, 0, 0.15),
-      0 0 16px rgba(255, 255, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  37% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(0, 57, 199, 0.3),
-      0 0 8px rgba(0, 57, 199, 0.15),
-      0 0 16px rgba(0, 57, 199, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  50% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(26, 86, 219, 0.3),
-      0 0 8px rgba(26, 86, 219, 0.15),
-      0 0 16px rgba(26, 86, 219, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  62% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(59, 130, 246, 0.3),
-      0 0 8px rgba(59, 130, 246, 0.15),
-      0 0 16px rgba(59, 130, 246, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  75% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(220, 38, 38, 0.3),
-      0 0 8px rgba(220, 38, 38, 0.15),
-      0 0 16px rgba(220, 38, 38, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  87% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(239, 68, 68, 0.3),
-      0 0 8px rgba(239, 68, 68, 0.15),
-      0 0 16px rgba(239, 68, 68, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  100% { 
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 4px 16px rgba(0, 0, 0, 0.08),
-      0 0 0 4px rgba(255, 215, 0, 0.3),
-      0 0 8px rgba(255, 215, 0, 0.15),
-      0 0 16px rgba(255, 215, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-}
+/* Old animation removed - now using SVG-based Colombian snake */
 
 .search-bar-transparent:hover {
   transform: translateY(-3px) scale(1.12);
   box-shadow: 
     0 16px 48px rgba(0, 0, 0, 0.2),
     0 8px 24px rgba(0, 0, 0, 0.12),
-    0 0 0 4px rgba(255, 215, 0, 0.5),
-    0 0 12px rgba(255, 215, 0, 0.3),
-    0 0 24px rgba(255, 215, 0, 0.15),
+    0 0 0 3px rgba(255, 215, 0, 0.9),
+    0 0 12px rgba(255, 215, 0, 0.6),
+    0 0 24px rgba(255, 215, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
-
-
 
 /* Clean Internal Elements */
 .search-sections {
@@ -190,6 +103,12 @@
 
 .elegant-search-btn:hover {
   transform: scale(1.05);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+}
+
+.luxury-search-container:hover .search-bar-transparent {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.25);
+  transition: box-shadow 0.3s ease;
 }
 
 .elegant-search-btn svg {
@@ -197,4 +116,3 @@
   height: 24px;
   color: #333;
 }
-
