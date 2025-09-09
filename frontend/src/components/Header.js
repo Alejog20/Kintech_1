@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext'; // Import useAuth hook
 
 function Header() {
   const { language } = useContext(LanguageContext);
-  const { isAuthenticated, user, logout } = useAuth(); // Get auth state
+  const { isAuthenticated, user, logout, isAdmin } = useAuth(); // Get auth state and isAdmin
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authModalTab, setAuthModalTab] = useState('login');
 
@@ -58,9 +58,13 @@ function Header() {
               <Link to="/about" className="nav-link">{t.about}</Link>
               <Link to="/contact" className="nav-link">{t.contact}</Link>
               
+              {isAdmin && (
+                <Link to="/admin/dashboard" className="nav-link">Admin Panel</Link>
+              )}
+
               {isAuthenticated ? (
                 <>
-                  <span className="nav-link">Welcome, {user?.name}!</span>
+                  <span className="nav-link">Welcome, {user?.name || user?.email || 'User'}!</span>
                   <button onClick={logout} className="cta-button">{t.logout}</button>
                 </>
               ) : (

@@ -111,7 +111,7 @@ const renderWithContext = (component) => {
   return render(
     <LanguageContext.Provider value={mockLanguageContext}>
       {component}
-    </LanguageContext.Provider>
+    </Language-Context.Provider>
   );
 };
 

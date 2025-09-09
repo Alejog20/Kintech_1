@@ -1,15 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { LanguageContext } from '../context/LanguageContext';
 
 function PropertyCard({ property }) {
   const [isLiked, setIsLiked] = useState(false);
+  const { language } = useContext(LanguageContext);
 
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('en-COP', {
+  // Exchange rate for demonstration purposes (1 USD = 4000 COP)
+  const USD_TO_COP_RATE = 4000;
+
+  const formatPrice = (price, currencyCode, locale) => {
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
-      currency: 'COP',
+      currency: currencyCode,
       maximumFractionDigits: 0
     }).format(price);
+  };
+
+  const getPriceDisplay = () => {
+    // Handle both database format (pricePerNight) and frontend format (price_per_night)
+    let price;
+    if (property.type === 'rental') {
+      price = property.pricePerNight || property.price_per_night || 450000; // Default fallback
+    } else {
+      price = property.price || 1200000000; // Default fallback for sale properties
+    }
+
+    let display = '';
+
+    if (language === 'es') {
+      display = formatPrice(price, 'COP', 'es-CO');
+    } else { // language === 'en'
+      const priceUSD = price / USD_TO_COP_RATE;
+      display = formatPrice(priceUSD, 'USD', 'en-US');
+    }
+
+    if (property.type === 'rental') {
+      return language === 'es' ? `${display}/noche` : `${display}/night`;
+    } else {
+      return display;
+    }
   };
 
   const handleLike = (e) => {
@@ -17,13 +47,6 @@ function PropertyCard({ property }) {
     setIsLiked(!isLiked);
   };
 
-  const getPriceDisplay = () => {
-    if (property.type === 'rental') {
-      return `${formatPrice(property.pricePerNight || 120)}/night`;
-    } else {
-      return formatPrice(property.price);
-    }
-  };
 
   const getStatusBadge = () => {
     if (property.type === 'rental') {

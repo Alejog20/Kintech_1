@@ -78,7 +78,7 @@ function Home() {
       bedrooms: 2,
       bathrooms: 2,
       sqft: 120,
-      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop",
       description: "Elegante apartamento colonial restaurado en el corazón del centro histórico.",
       features: ["Balcón Colonial", "AC Central", "WiFi"],
       agent: "Carlos Rivas",
@@ -92,7 +92,7 @@ function Home() {
       bedrooms: 4,
       bathrooms: 5,
       sqft: 380,
-      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
       description: "Exclusivo penthouse con terraza panorámica y vista 360° al mar Caribe.",
       features: ["Terraza 360°", "Jacuzzi", "Ascensor Privado"],
       agent: "Sofía Pérez",
@@ -106,7 +106,7 @@ function Home() {
       bedrooms: 3,
       bathrooms: 3,
       sqft: 200,
-      image: "https://images.unsplash.com/photo-1617826359993-23a5165b4617?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop",
       description: "Auténtica casa colonial con patio central y arte urbano en las cercanías.",
       features: ["Patio Central", "Arte Local", "Cocina Gourmet"],
       agent: "Andrés Jaramillo",
@@ -120,7 +120,7 @@ function Home() {
       bedrooms: 3,
       bathrooms: 3,
       sqft: 180,
-      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop",
       description: "Moderno apartamento en exclusivo conjunto residencial con amenidades completas.",
       features: ["Piscina", "Zona BBQ", "Seguridad 24h"],
       agent: "María Fernández",
@@ -134,7 +134,7 @@ function Home() {
       bedrooms: 1,
       bathrooms: 1,
       sqft: 85,
-      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
       description: "Creativo loft con diseño moderno en el emergente barrio de La Matuna.",
       features: ["Diseño Único", "Luz Natural", "Zona Trabajo"],
       agent: "Diego Martínez",
@@ -148,7 +148,7 @@ function Home() {
       bedrooms: 4,
       bathrooms: 4,
       sqft: 320,
-      image: "https://images.unsplash.com/photo-1628744444594-5a345107e335?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
       description: "Elegante casa republicana restaurada con detalles arquitectónicos originales.",
       features: ["Arquitectura Original", "Patio Colonial", "Parking"],
       agent: "Isabella Torres",
@@ -176,10 +176,220 @@ function Home() {
       bedrooms: 4,
       bathrooms: 4,
       sqft: 350,
-      image: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800&h=600&fit=crop",
       description: "Espaciosa villa familiar con jardín privado y acceso directo a la laguna.",
       features: ["Jardín Privado", "Acceso Laguna", "Zona Niños"],
       agent: "Roberto Vargas",
+    },
+    {
+      id: 10,
+      title: "Casa Republicana San Diego",
+      type: "sale",
+      price: 1800000000,
+      location: "San Diego, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 320,
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      description: "Elegante casa republicana restaurada con detalles arquitectónicos originales.",
+      features: ["Arquitectura Original", "Patio Colonial", "Parking"],
+      agent: "Isabella Torres",
+    },
+    {
+      id: 11,
+      title: "Apartamento Luxury Bocagrande",
+      type: "rental",
+      pricePerNight: 520000,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 220,
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+      description: "Moderno apartamento con vista al mar y amenidades de lujo.",
+      features: ["Vista al Mar", "Piscina", "Gym"],
+      agent: "Carlos Mendez",
+    },
+    {
+      id: 12,
+      title: "Villa Colonial Castillogrande",
+      type: "sale",
+      price: 3200000000,
+      location: "Castillogrande, Cartagena",
+      bedrooms: 5,
+      bathrooms: 5,
+      sqft: 420,
+      image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop",
+      description: "Espectacular villa colonial con diseño contemporáneo y jardines tropicales.",
+      features: ["Jardín Tropical", "Piscina Privada", "Terraza"],
+      agent: "Ana Gutierrez",
+    },
+    {
+      id: 13,
+      title: "Loft Moderno Centro Histórico",
+      type: "rental",
+      pricePerNight: 390000,
+      location: "Centro Histórico, Cartagena",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 140,
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+      description: "Loft contemporáneo en edificio colonial restaurado del centro histórico.",
+      features: ["Diseño Moderno", "Ubicación Central", "WiFi"],
+      agent: "Miguel Rodríguez",
+    },
+    {
+      id: 14,
+      title: "Casa Boutique Getsemaní",
+      type: "rental",
+      pricePerNight: 460000,
+      location: "Getsemaní, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 180,
+      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop",
+      description: "Casa boutique con decoración artística y ambiente bohemio único.",
+      features: ["Arte Local", "Patio Interno", "AC"],
+      agent: "Lucia Fernandez",
+    },
+    {
+      id: 15,
+      title: "Penthouse Ejecutivo Manga",
+      type: "sale",
+      price: 1650000000,
+      location: "Manga, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 280,
+      image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop",
+      description: "Penthouse moderno con terraza panorámica y acabados de primera.",
+      features: ["Terraza Panorámica", "Parqueadero", "Seguridad"],
+      agent: "David Silva",
+    },
+    {
+      id: 16,
+      title: "Apartamento Frente al Mar",
+      type: "rental",
+      pricePerNight: 350000,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 160,
+      image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop",
+      description: "Apartamento con vista directa al mar Caribe y balcón privado.",
+      features: ["Vista al Mar", "Balcón Privado", "Piscina"],
+      agent: "Carmen López",
+    },
+    {
+      id: 17,
+      title: "Casa Colonial La Matuna",
+      type: "sale",
+      price: 980000000,
+      location: "La Matuna, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 250,
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      description: "Casa colonial restaurada en el emergente barrio de La Matuna.",
+      features: ["Restaurada", "Patio Central", "Parking"],
+      agent: "Fernando Aguilar",
+    },
+    {
+      id: 18,
+      title: "Villa Moderna El Laguito",
+      type: "rental",
+      pricePerNight: 680000,
+      location: "El Laguito, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 300,
+      image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800&h=600&fit=crop",
+      description: "Villa moderna con piscina privada y acceso directo a la laguna.",
+      features: ["Piscina Privada", "Jardín", "BBQ"],
+      agent: "Patricia Morales",
+    },
+    {
+      id: 19,
+      title: "Estudio de Diseño Bocagrande",
+      type: "rental",
+      pricePerNight: 280000,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 1,
+      bathrooms: 1,
+      sqft: 75,
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+      description: "Estudio minimalista con diseño contemporáneo y vista parcial al mar.",
+      features: ["Diseño Minimalista", "Vista Parcial", "WiFi"],
+      agent: "Andrés Castro",
+    },
+    {
+      id: 20,
+      title: "Casa Señorial San Diego",
+      type: "sale",
+      price: 2800000000,
+      location: "San Diego, Cartagena",
+      bedrooms: 5,
+      bathrooms: 5,
+      sqft: 380,
+      image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop",
+      description: "Majestuosa casa señorial con arquitectura colonial y jardines exuberantes.",
+      features: ["Arquitectura Colonial", "Jardines", "Garaje"],
+      agent: "Ricardo Herrera",
+    },
+    {
+      id: 21,
+      title: "Apartamento Luxury Castillogrande",
+      type: "rental",
+      pricePerNight: 420000,
+      location: "Castillogrande, Cartagena",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 130,
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+      description: "Apartamento de lujo con acabados premium y vista espectacular.",
+      features: ["Acabados Premium", "Vista Espectacular", "Gym"],
+      agent: "Valentina Cruz",
+    },
+    {
+      id: 22,
+      title: "Loft Artístico Getsemaní",
+      type: "rental",
+      pricePerNight: 320000,
+      location: "Getsemaní, Cartagena",
+      bedrooms: 1,
+      bathrooms: 1,
+      sqft: 95,
+      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop",
+      description: "Loft con decoración artística en el corazón cultural de Cartagena.",
+      features: ["Arte Original", "Ubicación Cultural", "AC"],
+      agent: "Gabriel Ospina",
+    },
+    {
+      id: 23,
+      title: "Villa Ejecutiva Manga",
+      type: "sale",
+      price: 1450000000,
+      location: "Manga, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 310,
+      image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop",
+      description: "Villa ejecutiva en exclusivo sector residencial con todas las comodidades.",
+      features: ["Sector Exclusivo", "Piscina", "Seguridad 24h"],
+      agent: "Mónica Jiménez",
+    },
+    {
+      id: 24,
+      title: "Casa Boutique Centro Histórico",
+      type: "sale",
+      price: 2100000000,
+      location: "Centro Histórico, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 260,
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      description: "Casa boutique completamente renovada en el corazón del centro histórico.",
+      features: ["Completamente Renovada", "Ubicación Premium", "Patio"],
+      agent: "Sebastián Vega",
     }
   ];
   const mockDataEN = [
@@ -206,7 +416,7 @@ function Home() {
       bedrooms: 2,
       bathrooms: 2,
       sqft: 1290,
-      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop",
       description: "Elegant restored colonial apartment in the heart of the historic center.",
       features: ["Colonial Balcony", "Central AC", "WiFi"],
       agent: "Carlos Rivas",
@@ -220,7 +430,7 @@ function Home() {
       bedrooms: 4,
       bathrooms: 5,
       sqft: 4090,
-      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
       description: "Exclusive penthouse with panoramic terrace and 360° Caribbean Sea views.",
       features: ["360° Terrace", "Jacuzzi", "Private Elevator"],
       agent: "Sofia Pérez",
@@ -234,7 +444,7 @@ function Home() {
       bedrooms: 3,
       bathrooms: 3,
       sqft: 2150,
-      image: "https://images.unsplash.com/photo-1617826359993-23a5165b4617?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop",
       description: "Authentic colonial house with central courtyard and street art nearby.",
       features: ["Central Courtyard", "Local Art", "Gourmet Kitchen"],
       agent: "Andrés Jaramillo",
@@ -248,7 +458,7 @@ function Home() {
       bedrooms: 3,
       bathrooms: 3,
       sqft: 1940,
-      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop",
       description: "Modern apartment in exclusive residential complex with complete amenities.",
       features: ["Pool", "BBQ Area", "24h Security"],
       agent: "María Fernández",
@@ -262,7 +472,7 @@ function Home() {
       bedrooms: 1,
       bathrooms: 1,
       sqft: 915,
-      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
       description: "Creative loft with modern design in the emerging La Matuna neighborhood.",
       features: ["Unique Design", "Natural Light", "Work Space"],
       agent: "Diego Martínez",
@@ -276,7 +486,7 @@ function Home() {
       bedrooms: 4,
       bathrooms: 4,
       sqft: 3440,
-      image: "https://images.unsplash.com/photo-1628744444594-5a345107e335?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
       description: "Elegant restored republican house with original architectural details.",
       features: ["Original Architecture", "Colonial Patio", "Parking"],
       agent: "Isabella Torres",
@@ -304,10 +514,220 @@ function Home() {
       bedrooms: 4,
       bathrooms: 4,
       sqft: 3770,
-      image: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800&h=600&fit=crop",
       description: "Spacious family villa with private garden and direct lagoon access.",
       features: ["Private Garden", "Lagoon Access", "Kids Area"],
       agent: "Roberto Vargas",
+    },
+    {
+      id: 10,
+      title: "Republican House San Diego",
+      type: "sale",
+      price: 480000,
+      location: "San Diego, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 3440,
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      description: "Elegant restored republican house with original architectural details.",
+      features: ["Original Architecture", "Colonial Patio", "Parking"],
+      agent: "Isabella Torres",
+    },
+    {
+      id: 11,
+      title: "Luxury Bocagrande Apartment",
+      type: "rental",
+      pricePerNight: 140,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 2370,
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+      description: "Modern apartment with ocean view and luxury amenities.",
+      features: ["Ocean View", "Pool", "Gym"],
+      agent: "Carlos Mendez",
+    },
+    {
+      id: 12,
+      title: "Colonial Villa Castillogrande",
+      type: "sale",
+      price: 850000,
+      location: "Castillogrande, Cartagena",
+      bedrooms: 5,
+      bathrooms: 5,
+      sqft: 4520,
+      image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop",
+      description: "Spectacular colonial villa with contemporary design and tropical gardens.",
+      features: ["Tropical Garden", "Private Pool", "Terrace"],
+      agent: "Ana Gutierrez",
+    },
+    {
+      id: 13,
+      title: "Modern Loft Historic Center",
+      type: "rental",
+      pricePerNight: 105,
+      location: "Historic Center, Cartagena",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 1505,
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+      description: "Contemporary loft in restored colonial building in historic center.",
+      features: ["Modern Design", "Central Location", "WiFi"],
+      agent: "Miguel Rodríguez",
+    },
+    {
+      id: 14,
+      title: "Boutique House Getsemaní",
+      type: "rental",
+      pricePerNight: 125,
+      location: "Getsemaní, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 1940,
+      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop",
+      description: "Boutique house with artistic decoration and unique bohemian atmosphere.",
+      features: ["Local Art", "Internal Patio", "AC"],
+      agent: "Lucia Fernandez",
+    },
+    {
+      id: 15,
+      title: "Executive Penthouse Manga",
+      type: "sale",
+      price: 440000,
+      location: "Manga, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 3010,
+      image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop",
+      description: "Modern penthouse with panoramic terrace and premium finishes.",
+      features: ["Panoramic Terrace", "Parking", "Security"],
+      agent: "David Silva",
+    },
+    {
+      id: 16,
+      title: "Oceanfront Apartment",
+      type: "rental",
+      pricePerNight: 95,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 1720,
+      image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop",
+      description: "Apartment with direct Caribbean Sea view and private balcony.",
+      features: ["Ocean View", "Private Balcony", "Pool"],
+      agent: "Carmen López",
+    },
+    {
+      id: 17,
+      title: "Colonial House La Matuna",
+      type: "sale",
+      price: 260000,
+      location: "La Matuna, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 2690,
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      description: "Restored colonial house in the emerging La Matuna neighborhood.",
+      features: ["Restored", "Central Patio", "Parking"],
+      agent: "Fernando Aguilar",
+    },
+    {
+      id: 18,
+      title: "Modern Villa El Laguito",
+      type: "rental",
+      pricePerNight: 185,
+      location: "El Laguito, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 3230,
+      image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800&h=600&fit=crop",
+      description: "Modern villa with private pool and direct lagoon access.",
+      features: ["Private Pool", "Garden", "BBQ"],
+      agent: "Patricia Morales",
+    },
+    {
+      id: 19,
+      title: "Design Studio Bocagrande",
+      type: "rental",
+      pricePerNight: 75,
+      location: "Bocagrande, Cartagena",
+      bedrooms: 1,
+      bathrooms: 1,
+      sqft: 805,
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+      description: "Minimalist studio with contemporary design and partial ocean view.",
+      features: ["Minimalist Design", "Partial View", "WiFi"],
+      agent: "Andrés Castro",
+    },
+    {
+      id: 20,
+      title: "Stately House San Diego",
+      type: "sale",
+      price: 750000,
+      location: "San Diego, Cartagena",
+      bedrooms: 5,
+      bathrooms: 5,
+      sqft: 4090,
+      image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop",
+      description: "Majestic stately house with colonial architecture and lush gardens.",
+      features: ["Colonial Architecture", "Gardens", "Garage"],
+      agent: "Ricardo Herrera",
+    },
+    {
+      id: 21,
+      title: "Luxury Apartment Castillogrande",
+      type: "rental",
+      pricePerNight: 115,
+      location: "Castillogrande, Cartagena",
+      bedrooms: 2,
+      bathrooms: 2,
+      sqft: 1400,
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+      description: "Luxury apartment with premium finishes and spectacular view.",
+      features: ["Premium Finishes", "Spectacular View", "Gym"],
+      agent: "Valentina Cruz",
+    },
+    {
+      id: 22,
+      title: "Artistic Loft Getsemaní",
+      type: "rental",
+      pricePerNight: 85,
+      location: "Getsemaní, Cartagena",
+      bedrooms: 1,
+      bathrooms: 1,
+      sqft: 1022,
+      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop",
+      description: "Loft with artistic decoration in the cultural heart of Cartagena.",
+      features: ["Original Art", "Cultural Location", "AC"],
+      agent: "Gabriel Ospina",
+    },
+    {
+      id: 23,
+      title: "Executive Villa Manga",
+      type: "sale",
+      price: 385000,
+      location: "Manga, Cartagena",
+      bedrooms: 4,
+      bathrooms: 4,
+      sqft: 3335,
+      image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop",
+      description: "Executive villa in exclusive residential sector with all amenities.",
+      features: ["Exclusive Sector", "Pool", "24h Security"],
+      agent: "Mónica Jiménez",
+    },
+    {
+      id: 24,
+      title: "Boutique House Historic Center",
+      type: "sale",
+      price: 560000,
+      location: "Historic Center, Cartagena",
+      bedrooms: 3,
+      bathrooms: 3,
+      sqft: 2795,
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      description: "Boutique house completely renovated in the heart of the historic center.",
+      features: ["Completely Renovated", "Premium Location", "Patio"],
+      agent: "Sebastián Vega",
     }
   ];
 
@@ -316,7 +736,7 @@ function Home() {
       setLoading(true);
       try {
         // Fetch from real API
-        const response = await fetch('http://localhost:5001/api/properties');
+        const response = await fetch('http://localhost:5000/api/properties');
         const data = await response.json();
         
         if (data.success) {
@@ -368,35 +788,16 @@ function Home() {
     }
   };
 
-  const formatPrice = (property) => {
-    const currency = translations[language].currency;
-    const locale = language === 'es' ? 'es-CO' : 'en-US';
-    
-    if (property.type === 'rental') {
-      return new Intl.NumberFormat(locale, {
-        style: 'currency',
-        currency: currency,
-        maximumFractionDigits: 0
-      }).format(property.pricePerNight) + translations[language].perNight;
-    } else {
-      return new Intl.NumberFormat(locale, {
-        style: 'currency',
-        currency: currency,
-        maximumFractionDigits: 0
-      }).format(property.price);
-    }
-  };
-
   const handleSearch = async (searchData) => {
     console.log('Search performed:', searchData);
     setLoading(true);
     
     try {
-      let url = 'http://localhost:5001/api/properties';
+      let url = 'http://localhost:5000/api/properties';
       const params = new URLSearchParams();
       
       if (searchData.query && searchData.query.trim()) {
-        url = 'http://localhost:5001/api/properties/search';
+        url = 'http://localhost:5000/api/properties/search';
         params.append('q', searchData.query.trim());
       }
       
@@ -450,6 +851,43 @@ function Home() {
 
   const t = translations[language];
 
+  // USD to COP conversion rate
+  const USD_TO_COP_RATE = 4000;
+
+  // Price formatting function
+  const formatPrice = (price, currency, locale) => {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(price);
+  };
+
+  // Get price display for each property
+  const getPriceDisplay = (property) => {
+    let price;
+    if (property.type === 'rental') {
+      price = property.pricePerNight || property.price_per_night || 450000;
+    } else {
+      price = property.price || 1200000000;
+    }
+
+    let display = '';
+    if (language === 'es') {
+      display = formatPrice(price, 'COP', 'es-CO');
+    } else {
+      const priceUSD = price / USD_TO_COP_RATE;
+      display = formatPrice(priceUSD, 'USD', 'en-US');
+    }
+
+    if (property.type === 'rental') {
+      return language === 'es' ? `${display}/noche` : `${display}/night`;
+    } else {
+      return display;
+    }
+  };
+
   if (loading) return <div className="loading">{t.loadingText}</div>;
 
   return (
@@ -460,7 +898,6 @@ function Home() {
       <section className="hero colombian-hero">
         <div className="colombian-flag-accent"></div>
         <div className="hero-content">
-          <div className="hero-badge">{t.luxuryBadge}</div>
           <h1 className="hero-title">{t.heroTitle}</h1>
           <p className="hero-tagline">✨ {t.heroTagline}</p>
           <div className="hero-stats enhanced-stats">
@@ -532,81 +969,66 @@ function Home() {
         <div className="container">
           <div className="properties-grid">
             {filteredProperties.map(property => (
-              <div key={property.id} className="property-card">
-                <div className="property-image">
-                  <img src={property.image} alt={property.title} />
-                  <div className="property-price">{formatPrice(property)}</div>
-                  <div className={`property-type-badge ${property.type}`}>
-                    {property.type === 'rental' ? t.forRent : t.forSale}
+              <Link key={property.id} to={`/property/${property.id}`} className="property-card-link">
+                <div className="property-card">
+                  <div className="property-image">
+                    <img src={property.image} alt={property.title} />
+                    <div className={`property-type-badge ${property.type}`}>
+                      {property.type === 'rental' ? t.forRent : t.forSale}
+                    </div>
+                    <div className="price-badge">
+                      {getPriceDisplay(property)}
+                    </div>
                   </div>
-                </div>
                 <div className="property-content">
-                  <div className="property-content-top">
-                    {/* Scarcity & Social Proof Indicators */}
-                    {property.id <= 2 && (
-                      <div className="urgency-badge">⏰ Solo 2 disponibles</div>
-                    )}
-                    {property.id === 3 && (
-                      <div className="social-proof-badge">✨ 12 personas viendo</div>
-                    )}
-                    
-                    <div className="property-header">
-                      <h3 className="property-title">{property.title}</h3>
-                      {property.id <= 3 && (
-                        <span className="trending-badge">🔥 Popular</span>
+                  {/* Strategic Engagement Indicators - Applied to select properties */}
+                  {property.id <= 3 && (
+                    <div className="engagement-indicators">
+                      {property.id === 2 && (
+                        <div className="urgency-badge shimmer">
+                          ⚡ Solo 3 disponibles
+                        </div>
+                      )}
+                      {property.id === 3 && (
+                        <div className="trending-badge glow">
+                          🔥 Tendencia popular
+                        </div>
                       )}
                     </div>
-                    
-                    <div className="location-rating">
-                      <p className="property-location">📍 {property.location}</p>
-                      <div className="property-rating">
-                        <span className="stars">⭐⭐⭐⭐⭐</span>
-                        <span className="rating-count">(4.8)</span>
-                      </div>
-                    </div>
-                    
-                    <div className="property-features">
-                      <span className="feature">🛏️ {property.bedrooms}</span>
-                      <span className="feature">🚿 {property.bathrooms}</span>
-                      <span className="feature">📐 {property.sqft}m²</span>
-                      {property.features.slice(0, 2).map(feature => (
-                        <span key={feature} className="feature premium-feature">✨ {feature}</span>
-                      ))}
-                    </div>
-                    
+                  )}
+                  
+                  <div className="property-header">
+                    <h3 className="property-title">{property.title}</h3>
+                    {/* Premium badges for high-value properties */}
+                    {property.id <= 2 && (
+                      <span className="premium-badge">✨ Premium</span>
+                    )}
                   </div>
                   
-                  <div className="property-content-bottom">
+                  <p className="property-location">📍 {property.location}</p>
                   
-                  {/* Trust & Value Indicators */}
-                  <div className="trust-indicators">
-                    <span className="verified-badge">✓ Verificado</span>
-                    {property.type === 'sale' && property.price < 1500000000 && (
-                      <span className="value-badge">💰 Gran Valor</span>
-                    )}
-                    {property.type === 'rental' && (
-                      <span className="instant-badge">⚡ Respuesta Rápida</span>
+                  <div className="property-features">
+                    <span className="feature">🛏️ {property.bedrooms}</span>
+                    <span className="feature">🚿 {property.bathrooms}</span>
+                    <span className="feature">📐 {property.sqft}m²</span>
+                    {/* Value indicators for select properties */}
+                    {property.type === 'sale' && property.id <= 4 && (
+                      <span className="value-indicator">💎 Gran valor</span>
                     )}
                   </div>
                   
                   <div className="property-footer">
-                    <div className="agent-section">
-                      <span className="agent-info">
-                        <span className="agent-name">{property.agent}</span>
-                      </span>
-                      <span className="agent-credentials">Agente Certificado</span>
+                    <div className="amenities-section">
+                      {property.features.slice(0, 2).map((feature, index) => (
+                        <span key={index} className="amenity-tag">
+                          {feature}
+                        </span>
+                      ))}
                     </div>
-                    <Link 
-                      to={`/property/${property.id}`} 
-                      className="view-details-btn premium-cta"
-                    >
-                      <span>{t.viewDetails}</span>
-                      <span className="cta-subtext">Ver ahora</span>
-                    </Link>
-                  </div>
                   </div>
                 </div>
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

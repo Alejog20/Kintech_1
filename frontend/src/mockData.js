@@ -462,7 +462,7 @@ export const mockDataEN = [
     id: 1,
     title: "Luxury Oceanfront Villa in Bocagrande",
     type: "sale",
-    price: 950000,
+    price: 3800000000, // Converted from 950000 USD * 4000 COP/USD
     location: "Bocagrande, Cartagena",
     bedrooms: 5,
     bathrooms: 6,
@@ -477,7 +477,7 @@ export const mockDataEN = [
     id: 2,
     title: "Colonial Apartment in the Walled City",
     type: "rental",
-    pricePerNight: 180,
+    pricePerNight: 720000, // Converted from 180 USD * 4000 COP/USD
     location: "Walled City, Cartagena",
     bedrooms: 2,
     bathrooms: 2,
@@ -492,7 +492,7 @@ export const mockDataEN = [
     id: 3,
     title: "Modern Penthouse with 360° Terrace",
     type: "sale",
-    price: 1200000,
+    price: 4800000000, // Converted from 1200000 USD * 4000 COP/USD
     location: "Bocagrande, Cartagena",
     bedrooms: 4,
     bathrooms: 5,
@@ -507,7 +507,7 @@ export const mockDataEN = [
     id: 4,
     title: "Bohemian House in Getsemaní",
     type: "rental",
-    pricePerNight: 160,
+    pricePerNight: 640000, // Converted from 160 USD * 4000 COP/USD
     location: "Getsemaní, Cartagena",
     bedrooms: 3,
     bathrooms: 3,
@@ -522,7 +522,7 @@ export const mockDataEN = [
     id: 5,
     title: "Family Apartment in Manga",
     type: "sale",
-    price: 400000,
+    price: 1600000000, // Converted from 400000 USD * 4000 COP/USD
     location: "Manga, Cartagena",
     bedrooms: 3,
     bathrooms: 3,
@@ -537,7 +537,7 @@ export const mockDataEN = [
     id: 6,
     title: "Industrial Chic Loft",
     type: "rental",
-    pricePerNight: 90,
+    pricePerNight: 360000, // Converted from 90 USD * 4000 COP/USD
     location: "Centro, Cartagena",
     bedrooms: 1,
     bathrooms: 1,
@@ -552,7 +552,7 @@ export const mockDataEN = [
     id: 7,
     title: "Republican House in San Diego",
     type: "sale",
-    price: 600000,
+    price: 2400000000, // Converted from 600000 USD * 4000 COP/USD
     location: "San Diego, Cartagena",
     bedrooms: 4,
     bathrooms: 4,
@@ -567,7 +567,7 @@ export const mockDataEN = [
     id: 8,
     title: "Studio with Ocean View in Castillogrande",
     type: "rental",
-    pricePerNight: 125,
+    pricePerNight: 500000, // Converted from 125 USD * 4000 COP/USD
     location: "Castillogrande, Cartagena",
     bedrooms: 1,
     bathrooms: 1,
@@ -582,7 +582,7 @@ export const mockDataEN = [
     id: 9,
     title: "Family Villa in El Laguito",
     type: "sale",
-    price: 730000,
+    price: 2920000000, // Converted from 730000 USD * 4000 COP/USD
     location: "El Laguito, Cartagena",
     bedrooms: 4,
     bathrooms: 4,
@@ -598,7 +598,7 @@ export const mockDataEN = [
     id: 10,
     title: "Private Island in the Rosario Islands",
     type: "rental",
-    pricePerNight: 950,
+    pricePerNight: 3800000, // Converted from 950 USD * 4000 COP/USD
     location: "Islas del Rosario, Cartagena",
     bedrooms: 6,
     bathrooms: 7,
@@ -613,7 +613,7 @@ export const mockDataEN = [
     id: 11,
     title: "Luxury Apartment in Morros",
     type: "sale",
-    price: 530000,
+    price: 2120000000, // Converted from 530000 USD * 4000 COP/USD
     location: "Morros, Cartagena",
     bedrooms: 3,
     bathrooms: 4,
@@ -628,7 +628,7 @@ export const mockDataEN = [
     id: 12,
     title: "Restored Historic House in San Diego",
     type: "rental",
-    pricePerNight: 250,
+    pricePerNight: 1000000, // Converted from 250 USD * 4000 COP/USD
     location: "San Diego, Cartagena",
     bedrooms: 5,
     bathrooms: 5,
@@ -643,7 +643,7 @@ export const mockDataEN = [
     id: 13,
     title: "Modern Villa in Manzanillo del Mar",
     type: "sale",
-    price: 1350000,
+    price: 5400000000, // Converted from 1350000 USD * 4000 COP/USD
     location: "Manzanillo del Mar, Cartagena",
     bedrooms: 6,
     bathrooms: 8,
@@ -658,7 +658,7 @@ export const mockDataEN = [
     id: 14,
     title: "Duplex Penthouse with Harbor Views",
     type: "rental",
-    pricePerNight: 175,
+    pricePerNight: 700000, // Converted from 175 USD * 4000 COP/USD
     location: "Manga, Cartagena",
     bedrooms: 3,
     bathrooms: 3,
@@ -673,7 +673,7 @@ export const mockDataEN = [
     id: 15,
     title: "Minimalist Apartment in Castillogrande",
     type: "sale",
-    price: 325000,
+    price: 1300000000, // Converted from 325000 USD * 4000 COP/USD
     location: "Castillogrande, Cartagena",
     bedrooms: 2,
     bathrooms: 2,
@@ -688,7 +688,7 @@ export const mockDataEN = [
     id: 16,
     title: "Romantic Getaway in Getsemaní",
     type: "rental",
-    pricePerNight: 140,
+    pricePerNight: 560000, // Converted from 140 USD * 4000 COP/USD
     location: "Getsemaní, Cartagena",
     bedrooms: 1,
     bathrooms: 1,
@@ -703,7 +703,7 @@ export const mockDataEN = [
     id: 17,
     title: "Luxury House in the Walled City",
     type: "sale",
-    price: 3000000,
+    price: 12000000000, // Converted from 3000000 USD * 4000 COP/USD
     location: "Walled City, Cartagena",
     bedrooms: 7,
     bathrooms: 9,
@@ -718,7 +718,7 @@ export const mockDataEN = [
     id: 18,
     title: "Apartment with Private Plunge Pool",
     type: "rental",
-    pricePerNight: 210,
+    pricePerNight: 840000, // Converted from 210 USD * 4000 COP/USD
     location: "Bocagrande, Cartagena",
     bedrooms: 3,
     bathrooms: 4,
@@ -733,7 +733,7 @@ export const mockDataEN = [
     id: 19,
     title: "Recreational Estate on Tierra Bomba",
     type: "sale",
-    price: 1050000,
+    price: 4200000000, // Converted from 1050000 USD * 4000 COP/USD
     location: "Tierra Bomba, Cartagena",
     bedrooms: 5,
     bathrooms: 5,
@@ -748,7 +748,7 @@ export const mockDataEN = [
     id: 20,
     title: "Loft in the Heart of San Diego",
     type: "rental",
-    pricePerNight: 130,
+    pricePerNight: 520000, // Converted from 130 USD * 4000 COP/USD
     location: "San Diego, Cartagena",
     bedrooms: 1,
     bathrooms: 2,
@@ -763,7 +763,7 @@ export const mockDataEN = [
     id: 21,
     title: "Family Apartment in Morros",
     type: "sale",
-    price: 450000,
+    price: 1800000000, // Converted from 450000 USD * 4000 COP/USD
     location: "Morros, Cartagena",
     bedrooms: 4,
     bathrooms: 4,
@@ -778,7 +778,7 @@ export const mockDataEN = [
     id: 22,
     title: "Luxury Cabin in Barú",
     type: "rental",
-    pricePerNight: 320,
+    pricePerNight: 1280000, // Converted from 320 USD * 4000 COP/USD
     location: "Barú, Cartagena",
     bedrooms: 2,
     bathrooms: 2,
@@ -793,7 +793,7 @@ export const mockDataEN = [
     id: 23,
     title: "Penthouse with Rooftop Pool in Bocagrande",
     type: "sale",
-    price: 980000,
+    price: 3920000000, // Converted from 980000 USD * 4000 COP/USD
     location: "Bocagrande, Cartagena",
     bedrooms: 3,
     bathrooms: 4,
@@ -808,7 +808,7 @@ export const mockDataEN = [
     id: 24,
     title: "Modern Studio in La Matuna",
     type: "rental",
-    pricePerNight: 70,
+    pricePerNight: 280000, // Converted from 70 USD * 4000 COP/USD
     location: "La Matuna, Cartagena",
     bedrooms: 1,
     bathrooms: 1,
@@ -823,7 +823,7 @@ export const mockDataEN = [
     id: 25,
     title: "Republican House for Investment",
     type: "sale",
-    price: 500000,
+    price: 2000000000, // Converted from 500000 USD * 4000 COP/USD
     location: "Getsemaní, Cartagena",
     bedrooms: 8,
     bathrooms: 8,
@@ -838,7 +838,7 @@ export const mockDataEN = [
     id: 26,
     title: "Beach Villa in the Islands",
     type: "rental",
-    pricePerNight: 480,
+    pricePerNight: 1920000, // Converted from 480 USD * 4000 COP/USD
     location: "Islas del Rosario, Cartagena",
     bedrooms: 4,
     bathrooms: 4,
@@ -853,7 +853,7 @@ export const mockDataEN = [
     id: 27,
     title: "Apartment with a Large Balcony",
     type: "sale",
-    price: 295000,
+    price: 1180000000, // Converted from 295000 USD * 4000 COP/USD
     location: "Crespo, Cartagena",
     bedrooms: 3,
     bathrooms: 2,
@@ -868,7 +868,7 @@ export const mockDataEN = [
     id: 28,
     title: "Luxury Suite in a Historic Hotel",
     type: "rental",
-    pricePerNight: 200,
+    pricePerNight: 800000, // Converted from 200 USD * 4000 COP/USD
     location: "Walled City, Cartagena",
     bedrooms: 1,
     bathrooms: 1,
@@ -883,7 +883,7 @@ export const mockDataEN = [
     id: 29,
     title: "Family House with Garden in Manga",
     type: "sale",
-    price: 650000,
+    price: 2600000000, // Converted from 650000 USD * 4000 COP/USD
     location: "Manga, Cartagena",
     bedrooms: 4,
     bathrooms: 5,
@@ -898,7 +898,7 @@ export const mockDataEN = [
     id: 30,
     title: "Minimalist Penthouse in Morros",
     type: "rental",
-    pricePerNight: 290,
+    pricePerNight: 1160000, // Converted from 290 USD * 4000 COP/USD
     location: "Morros, Cartagena",
     bedrooms: 2,
     bathrooms: 3,
