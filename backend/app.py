@@ -167,7 +167,7 @@ def get_current_user():
 
 @app.route('/api/auth/google/login')
 def google_login():
-    redirect_uri = 'http://localhost:5000/api/auth/google/callback'
+    redirect_uri = 'http://localhost:5001/api/auth/google/callback'
     return google.authorize_redirect(redirect_uri)
 
 @app.route('/api/auth/google/callback')
@@ -345,5 +345,5 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     print("Real Estate API Server Starting...")
-    print("Server running on http://localhost:5000")
-    app.run(debug=True, port=5000)
+    print("Flask Auth Server running on http://localhost:5001")
+    app.run(debug=True, port=5001)

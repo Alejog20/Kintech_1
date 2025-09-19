@@ -1,13 +1,13 @@
 # Rentev Project Context
 
-## 🏢 Project Overview
+##  Project Overview
 
 **Name**: Rentev  
 **Type**: Full-stack real estate platform  
 **Market**: Colombian property rental and sales  
 **Stage**: MVP with authentication system implemented
 
-## 🌍 Market Context
+##  Market Context
 
 ### **Primary Market: Cartagena de Indias**
 - **Tourism Hub**: High demand for short/long-term rentals
@@ -28,7 +28,7 @@
 - **Family-oriented** property decisions
 - **Security concerns** influence property choices
 
-## 🏗️ Current Architecture
+##  Current Architecture
 
 ### **Frontend (React)**
 - **Port**: 3001 (development)
@@ -58,7 +58,7 @@ User Table:
 - **Backend**: `.env` with Google OAuth credentials + JWT secret
 - **Database**: SQLite file in `backend/instance/`
 
-## 🔧 Technology Stack
+##  Technology Stack
 
 ### **Frontend Stack**
 - React 18.2.0
@@ -80,9 +80,9 @@ User Table:
 - npm/pip package management
 - Hot reloading (React dev server, Flask debug mode)
 
-## 🎯 Implemented Features
+##  Implemented Features
 
-### ✅ **Authentication System**
+###  **Authentication System**
 - Modal-based login/signup (no separate pages)  
 - Google OAuth integration
 - Email/password registration and login
@@ -91,20 +91,20 @@ User Table:
 - Dark mode compatibility
 - Bilingual support (Spanish/English)
 
-### ✅ **UI/UX Foundation**
+###  **UI/UX Foundation**
 - Responsive header with navigation
 - Dark/light mode toggle with system preference detection
 - Language toggle (ES/EN)
 - CSS variable system for consistent theming
 - Mobile-first design approach
 
-### ✅ **Development Infrastructure**  
+###  **Development Infrastructure**  
 - Environment variable configuration
 - Development server setup (frontend + backend)
 - Database initialization and management
 - Error handling and form validation
 
-## 🏗️ Planned Features (Roadmap)
+##  Planned Features (Roadmap)
 
 ### **Phase 1: Core Property Management**
 - Property listing creation and management
@@ -134,7 +134,7 @@ User Table:
 - Mobile app development
 - Enterprise features for real estate agencies
 
-## 🌟 Key Success Factors
+##  Key Success Factors
 
 ### **Technical Excellence**
 - Clean, maintainable, scalable code
@@ -154,7 +154,7 @@ User Table:
 - Accessibility compliance for inclusive design
 - Clear property information presentation
 
-## 🔍 Current Technical Debt & Improvements Needed
+##  Current Technical Debt & Improvements Needed
 
 ### **Immediate Priorities**
 - [ ] Add comprehensive error logging

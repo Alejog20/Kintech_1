@@ -1,0 +1,34 @@
+/* LikeButton.css */
+.like-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 2;
+}
+
+.like-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+  transition: color 0.2s ease, fill 0.2s ease;
+}
+
+.like-button.liked .heart-icon {
+  color: #ff4d4d; /* A vibrant red for the liked state */
+  fill: #ff4d4d;
+}
