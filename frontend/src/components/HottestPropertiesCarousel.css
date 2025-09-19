@@ -1,0 +1,60 @@
+/* HottestPropertiesCarousel.css */
+.hottest-properties-carousel-container {
+  padding: 4rem 0;
+  background: var(--bg-secondary, #f4f7f6);
+}
+
+.carousel-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary, #333);
+  margin-bottom: 2rem;
+}
+
+/* Style the Swiper container */
+.swiper {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 50px; /* Add padding for pagination */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Customizing Navigation Buttons */
+.swiper-button-next, .swiper-button-prev {
+  color: var(--accent-color, #007bff);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background-color: var(--accent-color, #007bff);
+  color: white;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+/* Customizing Pagination Bullets */
+.swiper-pagination-bullet {
+  background-color: var(--text-secondary, #ccc);
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--accent-color, #007bff);
+  opacity: 1;
+}

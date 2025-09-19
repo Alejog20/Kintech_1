@@ -1,0 +1,43 @@
+# Claude Code Context File
+
+## Project Type
+Real Estate Application - Luxury Property Platform for Cartagena, Colombia
+
+## Technology Stack
+- Frontend: React 18 + React Router + Context API
+- Backend: Dual architecture (Flask + Node.js Express)
+- Database: SQLite (2 separate databases)
+- Authentication: Google OAuth + JWT
+- UI: Custom CSS + Swiper.js carousel
+
+## Code Style Rules
+- NO EMOJIS in any code files, comments, or documentation
+- Use descriptive variable names
+- Follow existing code patterns
+- Modern React patterns (hooks, functional components)
+- Python PEP 8 for Flask backend
+
+## Key Architecture Notes
+- Port conflict: Both backends on port 5000 (needs resolution)
+- Flask handles auth/admin, Node.js handles property operations
+- Two separate SQLite databases need synchronization
+- Frontend integrates with both backend APIs
+
+## Current Development State
+- Property likes system recently added
+- Hottest properties carousel implemented
+- Admin dashboard functional
+- Google OAuth working
+- Booking system operational
+- Luxury Cartagena properties seeded
+
+## Critical Issues to Address
+1. Backend port conflict resolution
+2. Database schema unification
+3. API integration consistency
+
+## Recent File Additions
+- HottestPropertiesCarousel component
+- LikeButton and LikeContext
+- LikedPropertiesPage
+- Comprehensive property seeding data

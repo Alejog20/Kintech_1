@@ -1,13 +1,13 @@
 # Testing Guidelines for Rentev
 
-## 🎯 Testing Philosophy
+##  Testing Philosophy
 
 **Testing is not optional** - Every feature must have corresponding tests. We follow the **testing pyramid**:
 - **70% Unit Tests** - Fast, isolated, specific
 - **20% Integration Tests** - Component interactions  
 - **10% E2E Tests** - Full user workflows
 
-## 🏗️ Testing Framework Stack
+##  Testing Framework Stack
 
 ### **Frontend Testing (React)**
 
@@ -43,7 +43,7 @@ npm install --save-dev @playwright/test
 
 **Why Playwright**: Better mobile testing (important for Colombian users), multiple browsers, network simulation
 
-## 📋 Testing Standards & File Structure
+##  Testing Standards & File Structure
 
 ### **Frontend Test Structure**
 ```
@@ -93,7 +93,7 @@ e2e/
 └── playwright.config.js
 ```
 
-## 🧪 Testing Templates & Examples
+##  Testing Templates & Examples
 
 ### **React Component Test Template**
 ```javascript
@@ -270,7 +270,7 @@ test.describe('Authentication Flow', () => {
 });
 ```
 
-## 🌟 Colombian-Specific Testing Requirements
+##  Colombian-Specific Testing Requirements
 
 ### **Currency Testing**
 ```javascript
@@ -303,7 +303,7 @@ test('switches between Spanish and English correctly', async () => {
 });
 ```
 
-## 🚀 Testing Commands
+##  Testing Commands
 
 ### **Frontend Testing**
 ```bash
@@ -350,7 +350,7 @@ npx playwright test --ui
 npx playwright show-report
 ```
 
-## 📊 Testing Checklist for New Features
+##  Testing Checklist for New Features
 
 Before marking any feature as complete:
 
@@ -365,7 +365,7 @@ Before marking any feature as complete:
 - [ ] **Accessibility** testing included
 - [ ] **Performance** testing on slow connections
 
-## 🎯 Test Coverage Goals
+##  Test Coverage Goals
 
 - **Minimum 80% code coverage** for all modules
 - **100% coverage** for authentication and payment flows
