@@ -17,8 +17,15 @@ Real Estate Application - Luxury Property Platform for Cartagena, Colombia
 - Modern React patterns (hooks, functional components)
 - Python PEP 8 for Flask backend
 
+## MANDATORY TESTING REQUIREMENTS
+- EVERY new feature MUST include comprehensive tests
+- Minimum 80% test coverage overall, 90% for critical paths
+- All tests must pass before committing
+- Follow TESTING_STRATEGY.md for detailed guidelines
+- Security audits required before deployment
+
 ## Key Architecture Notes
-- Port conflict: Both backends on port 5000 (needs resolution)
+- Port conflict: Both backends on port 5000 (PHASE 1 PRIORITY)
 - Flask handles auth/admin, Node.js handles property operations
 - Two separate SQLite databases need synchronization
 - Frontend integrates with both backend APIs
@@ -30,13 +37,21 @@ Real Estate Application - Luxury Property Platform for Cartagena, Colombia
 - Google OAuth working
 - Booking system operational
 - Luxury Cartagena properties seeded
+- TESTING_STRATEGY.md created with 5-phase implementation plan
+
+## Phase 1 Implementation (IN PROGRESS)
+1. Resolve port conflicts (Flask → 5001)
+2. Fix 9 security vulnerabilities in dependencies
+3. Setup testing infrastructure foundation
 
 ## Critical Issues to Address
-1. Backend port conflict resolution
-2. Database schema unification
-3. API integration consistency
+1. Backend port conflict resolution (ACTIVE)
+2. Security vulnerabilities (9 found)
+3. Zero test coverage (CRITICAL)
+4. Database schema unification
 
 ## Recent File Additions
+- TESTING_STRATEGY.md (Strategic testing framework)
 - HottestPropertiesCarousel component
 - LikeButton and LikeContext
 - LikedPropertiesPage

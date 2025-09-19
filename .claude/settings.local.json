@@ -11,7 +11,14 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Read(//c/Users/agarcia12345678/AppData/Local/Packages/MicrosoftWindows.Client.Core_cw5n1h2txyewy/TempState/ScreenClip/**)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run lint)",
+      "Bash(npm audit:*)",
+      "Bash(python -m pytest --version)",
+      "Bash(python:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm update:*)"
     ],
     "deny": [],
     "ask": []

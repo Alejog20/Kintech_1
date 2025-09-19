@@ -237,6 +237,17 @@ realstate-app/
 - Comments should be clear and text-based only
 - Error messages and user feedback should not contain emojis
 
+### MANDATORY TESTING REQUIREMENTS
+- **CRITICAL**: Every new feature MUST include comprehensive tests
+- **Test Coverage**: Minimum 80% overall, 90% for critical paths
+- **Test Types Required**:
+  - Unit tests for all components and functions
+  - Integration tests for user flows
+  - API tests for all endpoints
+  - Security tests for authentication flows
+- **Pre-commit**: All tests must pass before committing
+- **Documentation**: Test cases must be documented in TESTING_STRATEGY.md
+
 ### Other Style Guidelines
 - Use descriptive variable and function names
 - Follow existing code patterns and conventions
@@ -244,6 +255,8 @@ realstate-app/
 - Use modern JavaScript/React patterns (hooks, functional components)
 - Follow React best practices for state management
 - Use proper Python PEP 8 style for Flask backend
+- Run security audits before deploying
+- Follow Test-Driven Development (TDD) when possible
 
 ## Property Data Model
 
@@ -294,11 +307,13 @@ realstate-app/
 - Lazy loading for property images
 - Caching strategies for property data
 
-## Future Development Roadmap
+##  Development Roadmap
+- Run all tests and diganose, and provide a full report
+- Make sure search bar effect and componen fully match the search bar element borders so they perfectly fit when normal and when hovered
 - Resolve port conflict between backends
+- Enhance property cards page and cards to reflect a review section with a 5 start icon and the posibility of users rating them and the average stars number will be the highlighted starts, use colors palette and styling accordingly
 - Implement unified database schema
 - Add real-time booking availability
 - Implement payment processing
 - Add property comparison features
 - Enhance admin analytics dashboard
-- Mobile app development consideration
