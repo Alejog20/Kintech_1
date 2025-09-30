@@ -1,10 +1,10 @@
 // src/mocks/handlers.js
-import { http, HttpResponse } from 'msw';
+import { rest, HttpResponse } from 'msw';
 import { API_CONFIG } from '../config/api';
 
 export const handlers = [
   // Property API mocks (Node.js backend - port 5000)
-  http.get(`${API_CONFIG.PROPERTY_API}/api/properties`, () => {
+  rest.get(`${API_CONFIG.PROPERTY_API}/api/properties`, () => {
     return HttpResponse.json({
       success: true,
       data: [
@@ -27,7 +27,7 @@ export const handlers = [
     });
   }),
 
-  http.get(`${API_CONFIG.PROPERTY_API}/api/properties/:id`, ({ params }) => {
+  rest.get(`${API_CONFIG.PROPERTY_API}/api/properties/:id`, ({ params }) => {
     const { id } = params;
     return HttpResponse.json({
       success: true,
@@ -49,7 +49,7 @@ export const handlers = [
   }),
 
   // Auth API mocks (Flask backend - port 5001)
-  http.post(`${API_CONFIG.AUTH_API}/api/auth/login`, () => {
+  rest.post(`${API_CONFIG.AUTH_API}/api/auth/login`, () => {
     return HttpResponse.json({
       access_token: 'mock-jwt-token',
       user: {
@@ -61,7 +61,7 @@ export const handlers = [
     });
   }),
 
-  http.get(`${API_CONFIG.AUTH_API}/api/auth/me`, () => {
+  rest.get(`${API_CONFIG.AUTH_API}/api/auth/me`, () => {
     return HttpResponse.json({
       logged_in_as: {
         id: 1,
@@ -72,8 +72,22 @@ export const handlers = [
     });
   }),
 
+  rest.post(`${API_CONFIG.AUTH_API}/api/auth/register`, async ({ request }) => {
+    const newUser = await request.json();
+    if (newUser.email === 'existing@example.com') {
+      return HttpResponse.json(
+        { error: 'User already exists' },
+        { status: 409 }
+      );
+    }
+    return HttpResponse.json(
+      { message: 'User created successfully' },
+      { status: 201 }
+    );
+  }),
+
   // Booking API mocks
-  http.post(`${API_CONFIG.PROPERTY_API}/api/bookings`, () => {
+  rest.post(`${API_CONFIG.PROPERTY_API}/api/bookings`, () => {
     return HttpResponse.json({
       success: true,
       message: 'Booking created successfully',
@@ -82,7 +96,7 @@ export const handlers = [
   }),
 
   // Error handlers for testing error states
-  http.get(`${API_CONFIG.PROPERTY_API}/api/properties/error`, () => {
+  rest.get(`${API_CONFIG.PROPERTY_API}/api/properties/error`, () => {
     return HttpResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

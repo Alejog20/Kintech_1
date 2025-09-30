@@ -229,9 +229,10 @@ function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
           {activeTab === 'login' ? (
             <form onSubmit={handleLogin} className="auth-form">
               <div className="form-group">
-                <label>{t.email}</label>
+                <label htmlFor="login-email">{t.email}</label>
                 <input
                   type="email"
+                  id="login-email"
                   value={loginData.email}
                   onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
                   required
@@ -239,9 +240,10 @@ function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
                 />
               </div>
               <div className="form-group">
-                <label>{t.password}</label>
+                <label htmlFor="login-password">{t.password}</label>
                 <input
                   type="password"
+                  id="login-password"
                   value={loginData.password}
                   onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                   required
@@ -259,15 +261,16 @@ function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
               <GoogleLoginButton onError={setError} />
               
               <p className="auth-switch">
-                {t.noAccount} <button type="button" onClick={() => setActiveTab('register')}>{t.switchToRegister}</button>
+                <span>{t.noAccount}</span> <button type="button" onClick={() => setActiveTab('register')}>{t.switchToRegister}</button>
               </p>
             </form>
           ) : (
             <form onSubmit={handleRegister} className="auth-form">
               <div className="form-group">
-                <label>{t.name}</label>
+                <label htmlFor="register-name">{t.name}</label>
                 <input
                   type="text"
+                  id="register-name"
                   value={registerData.name}
                   onChange={(e) => setRegisterData({ ...registerData, name: e.target.value })}
                   required
@@ -275,9 +278,10 @@ function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
                 />
               </div>
               <div className="form-group">
-                <label>{t.email}</label>
+                <label htmlFor="register-email">{t.email}</label>
                 <input
                   type="email"
+                  id="register-email"
                   value={registerData.email}
                   onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
                   required
@@ -285,9 +289,10 @@ function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
                 />
               </div>
               <div className="form-group">
-                <label>{t.password}</label>
+                <label htmlFor="register-password">{t.password}</label>
                 <input
                   type="password"
+                  id="register-password"
                   value={registerData.password}
                   onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })}
                   required
@@ -305,7 +310,7 @@ function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
               <GoogleLoginButton onError={setError} />
               
               <p className="auth-switch">
-                {t.alreadyHaveAccount} <button type="button" onClick={() => setActiveTab('login')}>{t.switchToLogin}</button>
+                <span>{t.alreadyHaveAccount}</span> <button type="button" onClick={() => setActiveTab('login')}>{t.switchToLogin}</button>
               </p>
             </form>
           )}

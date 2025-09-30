@@ -645,13 +645,26 @@ body:not(.dark-mode) .cta-button:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.4s ease;
+  transition: all 0.6s ease-in-out;
   filter: brightness(1.05) contrast(1.1);
+}
+
+.carousel-image {
+  transition: opacity 0.6s ease-in-out, transform 0.4s ease !important;
 }
 
 .property-card:hover .property-image img {
   transform: scale(1.08);
   filter: brightness(1.1) contrast(1.15);
+}
+
+.property-card:hover .carousel-image {
+  animation: carousel-fade 0.6s ease-in-out;
+}
+
+@keyframes carousel-fade {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
 .property-price,
@@ -788,14 +801,14 @@ body.dark-mode .favorite-btn:hover {
 }
 
 .property-content {
-  padding: 1.2rem;
+  padding: 1rem;
   background: var(--bg-surface);
-  flex-grow: 1; /* Fill remaining space */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 170px; /* More compact content area */
-  gap: 0.6rem; /* Professional spacing */
+  justify-content: flex-start;
+  min-height: 170px;
+  gap: 0.2rem;
 }
 
 .property-content-top {
@@ -810,9 +823,9 @@ body.dark-mode .favorite-btn:hover {
 .property-title {
   font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
   color: var(--text-primary);
-  line-height: 1.4;
+  line-height: 1.3;
   letter-spacing: -0.02em;
   transition: color 0.3s ease;
   min-height: 3.5rem; /* Consistent title height */
@@ -838,19 +851,20 @@ body.dark-mode .property-card:hover .property-title {
 
 .property-location {
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  min-height: 1.5rem; /* Consistent location height */
+  gap: 0.3rem;
+  min-height: 1.5rem;
+  line-height: 1.3;
 }
 
 .property-features {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
@@ -858,16 +872,45 @@ body.dark-mode .property-card:hover .property-title {
 
 .feature {
   background: var(--bg-tertiary);
-  padding: 0.3rem 0.6rem;
+  padding: 0.4rem 0.7rem;
   border-radius: 12px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 600;
   border: 1px solid var(--border-light);
   transition: all 0.3s ease;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  justify-content: center;
+  gap: 0.3rem;
+  min-width: 65px;
+  min-height: 28px;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.icon {
+  display: inline-flex;
+  width: 0.85em;
+  height: 0.85em;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.feature .icon {
+  font-size: 0.85rem;
+}
+
+.property-location .icon {
+  font-size: 0.85rem;
+}
+
+.value-indicator .icon {
+  font-size: 0.85rem;
 }
 
 .property-card:hover .feature {
@@ -1021,7 +1064,7 @@ body.dark-mode .view-details-btn:hover {
 .urgency-badge {
   background: linear-gradient(135deg, #FF6B35, #E65100);
   color: white;
-  padding: 0.25rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 12px;
   font-size: 0.65rem;
   font-weight: 600;
@@ -1029,17 +1072,27 @@ body.dark-mode .view-details-btn:hover {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   max-width: max-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  line-height: 1.2;
 }
 
 .premium-badge {
   background: linear-gradient(135deg, #9C27B0, #7B1FA2);
   color: white;
-  padding: 0.25rem 0.6rem;
+  padding: 0.3rem 0.65rem;
   border-radius: 12px;
   font-size: 0.7rem;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(156, 39, 176, 0.3);
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  flex-shrink: 0;
 }
 
 .value-indicator {
@@ -1047,7 +1100,16 @@ body.dark-mode .view-details-btn:hover {
   color: #333;
   font-weight: 600;
   font-size: 0.75rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  line-height: 1.4;
+  vertical-align: middle;
 }
 
 .response-badge {
@@ -1116,29 +1178,35 @@ body.dark-mode .view-details-btn:hover {
 /* Neuromarketing Enhancement Styles */
 .property-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .property-header h3 {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.4;
   color: var(--text-primary);
-  flex-grow: 1;
+  flex: 1;
+  min-width: 0;
 }
 
 .trending-badge {
   background: linear-gradient(135deg, #ff6b35, #f7931e);
   color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 600;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  line-height: 1.2;
   letter-spacing: 0.5px;
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
@@ -1228,23 +1296,34 @@ body.dark-mode .view-details-btn:hover {
   flex-direction: column;
   gap: 0.8rem;
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0.4rem;
 }
 
 .amenities-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .amenity-tag {
   background: var(--bg-tertiary);
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.7rem;
   border-radius: 10px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 600;
   border: 1px solid var(--border-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+  height: auto;
+  min-height: 26px;
 }
 
 .engagement-section {
