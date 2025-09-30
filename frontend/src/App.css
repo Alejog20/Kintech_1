@@ -54,49 +54,51 @@
   --gradient-overlay: linear-gradient(135deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.05) 100%); /* 5% dark transparent overlay */
 }
 
-/* --- Dark Mode Colonial Sunset Palette --- */
+/* --- Dark Mode Nocturnal Sunset Palette --- */
 body.dark-mode {
-  /* Dark Colonial Sunset - Inverted warmth with proper contrast */
-  --primary-color: #E6A574;       /* Terracotta for dark mode accent */
-  --primary-light: #F2C09A;       /* Light Terracotta */
-  --primary-dark: #D4926A;        /* Darker Terracotta */
-  --secondary-color: #1a1a1a;     /* Dark Charcoal background */
-  --secondary-light: #282828;     /* Charcoal */
-  --accent-color: #B34B3B;        /* Deep Coral accent */
-  --accent-light: #C85D4E;        /* Lighter Coral */
-  --accent-coral: #B34B3B;        /* Deep Coral, Passion */
-  
+  /* Nocturnal Sunset - Inspired by Cartagena evening skyline */
+  --primary-color: #FF8C52;       /* Sunset Orange - primary accent */
+  --primary-light: #FFB084;       /* Light Sunset - hover states */
+  --primary-dark: #D96941;        /* Deep Orange - pressed states */
+  --secondary-color: #1C1814;     /* Rich Charcoal - main background */
+  --secondary-light: #2D2520;     /* Warm Charcoal - card backgrounds */
+  --accent-color: #FFB84D;        /* Golden Yellow - CTA buttons */
+  --accent-light: #FFC973;        /* Light Gold - highlights */
+  --accent-coral: #B85A3C;        /* Burnt Sienna - secondary accents */
+
   /* Dark Mode Text - High contrast for readability */
-  --text-primary: #FFFFFF;        /* Pure White for high contrast */
-  --text-secondary: #E6D5C3;      /* Warm Light for secondary text */
-  --text-muted: #B8A696;          /* Muted warm gray */
+  --text-primary: #FFFFFF;        /* Pure White - headings */
+  --text-secondary: #F5E6D3;      /* Warm Cream - body text */
+  --text-muted: #B8A896;          /* Muted Warm - secondary info */
   --text-light: #FFFFFF;          /* White text */
-  --text-warm: #F2C09A;           /* Light terracotta for accents */
-  
+  --text-warm: #FFB084;           /* Light Sunset - special text */
+  --text-accent: #FFB84D;         /* Golden - links & highlights */
+
   /* Dark Mode Backgrounds - Warm dark tones */
-  --bg-primary: #1a1a1a;          /* Dark Charcoal */
-  --bg-secondary: #282828;        /* Charcoal */
-  --bg-tertiary: #3A3A3A;         /* Lighter Charcoal */
-  --bg-surface: #282828;          /* Card Background */
-  --bg-overlay: rgba(230, 165, 116, 0.2); /* Warm overlay for images */
-  
-  /* Dark Mode Borders - Warm dark borders */
-  --border-color: #4A4A4A;        /* Dark Warm Border */
-  --border-light: #3A3A3A;        /* Darker Warm Border */
-  --border-focus: var(--accent-color); /* Coral Focus */
-  --border-coral: var(--accent-coral); /* Coral accent borders */
-  
-  /* Dark Mode Shadows - Adjusted for dark theme */
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-  --shadow-luxury: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  
+  --bg-primary: #1C1814;          /* Rich Charcoal */
+  --bg-secondary: #2D2520;        /* Warm Dark - cards */
+  --bg-tertiary: #3d3530;         /* Lighter Warm - elevated surfaces */
+  --bg-surface: #2a2520;          /* Card backgrounds */
+  --bg-overlay: rgba(255, 140, 82, 0.15); /* Warm orange overlay */
+
+  /* Dark Mode Borders - Warm gray borders */
+  --border-color: #4a3f38;        /* Warm Gray - subtle borders */
+  --border-light: #3d3530;        /* Darker borders */
+  --border-focus: #FFB84D;        /* Golden focus rings */
+  --border-coral: #FF8C52;        /* Orange accent borders */
+
+  /* Dark Mode Shadows - Warm glow effects */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(255, 140, 82, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(255, 140, 82, 0.15);
+  --shadow-xl: 0 20px 25px -5px rgba(255, 140, 82, 0.2);
+  --shadow-luxury: 0 25px 50px -12px rgba(255, 140, 82, 0.25);
+
   /* Dark Mode Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
-  --gradient-warm: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-  --gradient-overlay: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(179, 75, 59, 0.3) 100%);
+  --gradient-primary: linear-gradient(135deg, #FF8C52 0%, #FFB84D 100%);
+  --gradient-warm: linear-gradient(135deg, #D96941 0%, #FF8C52 100%);
+  --gradient-overlay: linear-gradient(135deg, rgba(28, 24, 20, 0.85) 0%, rgba(61, 53, 48, 0.4) 50%, rgba(217, 105, 65, 0.2) 100%);
+  --gradient-sunset: linear-gradient(180deg, #FF8C52 0%, #D96941 50%, #1C1814 100%);
 }
 
 * {
@@ -1734,7 +1736,7 @@ body.dark-mode .instant-badge {
 /* Colonial Sunset Hero Section with Custom Background */
 .colombian-hero {
   position: relative;
-  background: 
+  background:
     var(--gradient-overlay),
     url('./bg7.jpg') center/cover no-repeat fixed;
   background-attachment: fixed;
@@ -1746,7 +1748,11 @@ body.dark-mode .instant-badge {
   backdrop-filter: blur(1px);
 }
 
-
+body.dark-mode .colombian-hero {
+  background:
+    var(--gradient-overlay),
+    url('./nocturnal_bg.jpg') center/cover no-repeat fixed;
+}
 
 .hero-badge {
   display: inline-block;
