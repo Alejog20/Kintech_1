@@ -49,8 +49,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const isAdmin = user && user.role === 'admin'; // New helper for admin check
-  console.log('AuthContext User:', user); // Add this line for debugging
-  console.log('AuthContext isAdmin:', isAdmin); // Add this line for debugging
+  
   
   const value = {
     token,

@@ -18,7 +18,11 @@
       "Bash(python -m pytest --version)",
       "Bash(python:*)",
       "Bash(npm ls:*)",
-      "Bash(npm update:*)"
+      "Bash(npm update:*)",
+      "Bash(timeout 5 bash -c \"while ! curl -s http://localhost:3000 > /dev/null; do sleep 1; done\")",
+      "Bash(netstat:*)",
+      "Bash(awk:*)",
+      "Bash(xargs taskkill:*)"
     ],
     "deny": [],
     "ask": []

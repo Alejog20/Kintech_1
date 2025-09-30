@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { LanguageContext } from '../context/LanguageContext'; // 2. Importar el contexto
 import LuxurySearchBar from '../components/LuxurySearchBar';
 import WhatsAppFloat from '../components/WhatsAppFloat';
+import { TbBed, TbBath, TbRuler2, TbMapPin, TbDiamond } from 'react-icons/tb';
 
 function Home() {
   const { language } = useContext(LanguageContext); // 3. Usar el contexto global
@@ -10,6 +11,8 @@ function Home() {
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [carouselIndex, setCarouselIndex] = useState({});
   // 4. Eliminar el estado local de idioma: const [language, setLanguage] = useState('es');
 
   const translations = {
@@ -851,6 +854,42 @@ function Home() {
 
   const t = translations[language];
 
+  // Generate multiple images from Unsplash URL for carousel
+  const generateCarouselImages = (baseUrl) => {
+    if (!baseUrl || !baseUrl.includes('unsplash')) return [baseUrl];
+
+    const variations = [
+      baseUrl,
+      baseUrl.replace('?w=800&h=600', '?w=800&h=600&crop=entropy'),
+      baseUrl.replace('?w=800&h=600', '?w=800&h=600&auto=format&fit=crop&q=80'),
+      baseUrl.replace('photo', 'photo-1580587771525-78b9dba3b914').replace('?w=800&h=600', '?w=800&h=600&crop=faces'),
+    ];
+    return variations;
+  };
+
+  // Carousel effect on hover
+  useEffect(() => {
+    let interval;
+    if (hoveredCard !== null) {
+      interval = setInterval(() => {
+        setCarouselIndex(prev => {
+          const property = filteredProperties.find(p => p.id === hoveredCard);
+          if (!property) return prev;
+
+          const images = generateCarouselImages(property.image);
+          const currentIndex = prev[hoveredCard] || 0;
+          const nextIndex = (currentIndex + 1) % images.length;
+
+          return { ...prev, [hoveredCard]: nextIndex };
+        });
+      }, 4000);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [hoveredCard, filteredProperties]);
+
   // USD to COP conversion rate
   const USD_TO_COP_RATE = 4000;
 
@@ -968,11 +1007,27 @@ function Home() {
       <section className="properties-section">
         <div className="container">
           <div className="properties-grid">
-            {filteredProperties.map(property => (
+            {filteredProperties.map(property => {
+              const carouselImages = generateCarouselImages(property.image);
+              const currentImageIndex = carouselIndex[property.id] || 0;
+              const currentImage = carouselImages[currentImageIndex];
+
+              return (
               <Link key={property.id} to={`/property/${property.id}`} className="property-card-link">
-                <div className="property-card">
+                <div
+                  className="property-card"
+                  onMouseEnter={() => setHoveredCard(property.id)}
+                  onMouseLeave={() => {
+                    setHoveredCard(null);
+                    setCarouselIndex(prev => ({ ...prev, [property.id]: 0 }));
+                  }}
+                >
                   <div className="property-image">
-                    <img src={property.image} alt={property.title} />
+                    <img
+                      src={currentImage}
+                      alt={property.title}
+                      className="carousel-image"
+                    />
                     <div className={`property-type-badge ${property.type}`}>
                       {property.type === 'rental' ? t.forRent : t.forSale}
                     </div>
@@ -1005,15 +1060,15 @@ function Home() {
                     )}
                   </div>
                   
-                  <p className="property-location">📍 {property.location}</p>
-                  
+                  <p className="property-location"><TbMapPin className="icon" /> {property.location}</p>
+
                   <div className="property-features">
-                    <span className="feature">🛏️ {property.bedrooms}</span>
-                    <span className="feature">🚿 {property.bathrooms}</span>
-                    <span className="feature">📐 {property.sqft}m²</span>
+                    <span className="feature"><TbBed className="icon" /> {property.bedrooms}</span>
+                    <span className="feature"><TbBath className="icon" /> {property.bathrooms}</span>
+                    <span className="feature"><TbRuler2 className="icon" /> {property.sqft}m²</span>
                     {/* Value indicators for select properties */}
                     {property.type === 'sale' && property.id <= 4 && (
-                      <span className="value-indicator">💎 Gran valor</span>
+                      <span className="value-indicator"><TbDiamond className="icon" /> Gran valor</span>
                     )}
                   </div>
                   
@@ -1029,7 +1084,8 @@ function Home() {
                 </div>
                 </div>
               </Link>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
